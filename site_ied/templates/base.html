@@ -1,0 +1,45 @@
+{% load cms_tags staticfiles sekizai_tags menu_tags %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}Institut d'Enseignement à Distance - Université Paris 8{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% render_block "css" %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <!-- SmartMenus jQuery Bootstrap Addon CSS -->
+    <link href="{% static 'bower_components/smartmenus/dist/addons/bootstrap/jquery.smartmenus.bootstrap.css' %}" rel="stylesheet">
+  </head>
+  <body style="padding-top:60px">
+    {% cms_toolbar %}
+      <div class="container">
+        <div class="navbar navbar-default" role="navigation">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">IED Paris 8</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              {% show_menu 0 100 100 100 "menu.html" %}
+            </ul>
+          </div>
+        </div>
+      {% block content %}
+      {% endblock content %}
+      </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <!-- SmartMenus jQuery plugin -->
+    <script type="text/javascript" src="{% static 'bower_components/smartmenus/dist/jquery.smartmenus.min.js' %}"></script>
+
+    <!-- SmartMenus jQuery Bootstrap Addon -->
+    <script type="text/javascript" src="{% static 'bower_components/smartmenus/dist/addons/bootstrap/jquery.smartmenus.bootstrap.min.js' %}"></script>
+    {% render_block "js" %}
+  </body>
+</html>
+

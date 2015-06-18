@@ -1,0 +1,20 @@
+{
+  "name": "site_ied",
+  "version": "0.1.0",
+  "description": "Le site central pour IED Paris 8",
+  "authors": [
+    "Nikos Peteinatos"
+  ],
+  "license": "MIT",
+  "homepage": "iedparis8.net",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "smartmenus": "~0.9.7"
+  }
+}
