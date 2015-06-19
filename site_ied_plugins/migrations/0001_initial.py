@@ -7,7 +7,7 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('duck_inscription', '0003_auto_20150617_0856'),
+        ('duck_inscription', '0003_auto_20150619_1114'),
         ('cms', '0011_auto_20150419_1006'),
     ]
 
