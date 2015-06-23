@@ -68,9 +68,7 @@ MEDIA_URL = '/static_tel/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, '../static').replace('\\', '/')
 MEDIA_ROOT = os.path.join(BASE_DIR, '../static_tel').replace('\\', '/')
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'site_ied', 'static'),
-)
+
 SITE_ID = 1
 
 TEMPLATE_LOADERS = (
