@@ -113,6 +113,7 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
+    'site_ied_plugins',
     'djangocms_admin_style',
     'djangocms_text_ckeditor',
     'django.contrib.auth',
@@ -142,7 +143,7 @@ INSTALLED_APPS = (
     'mailrobot',
     'duck_utils',
     'reversion',
-    'site_ied_plugins',
+
     'django_extensions'
 )
 
