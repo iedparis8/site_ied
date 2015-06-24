@@ -24,7 +24,12 @@
       "site_ied_plugins/static/bower_components/smartmenus/dist/addons/bootstrap/jquery.smartmenus.bootstrap.min.js",
       "site_ied_plugins/static/bower_components/smartmenus/dist/addons/bootstrap/jquery.smartmenus.bootstrap.css",
       "site_ied_plugins/static/bower_components/smartmenus/dist/jquery.smartmenus.min.js"
-    ]
+    ],
+      "bootstrap": [
+        "site_ied_plugins/static/bower_components/bootstrap/dist/css/bootstrap.min.css",
+        "site_ied_plugins/static/bower_components/bootstrap/dist/css/bootstrap-theme.min.css"
+
+      ]
     }
   }
 }
