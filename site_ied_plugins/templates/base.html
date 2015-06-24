@@ -5,10 +5,10 @@
     <title>{% block title %}Institut d'Enseignement à Distance - Université Paris 8{% endblock title %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% render_block "css" %}
-    {% addtoblock "css" %}<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css">{% endaddtoblock %}
-    {% addtoblock "css" %}<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap-theme.min.css">{% endaddtoblock %}
+    {% addtoblock "css" %}<link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}">{% endaddtoblock %}
+    {% addtoblock "css" %}<link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap-theme.min.css' %}">{% endaddtoblock %}
     <!-- SmartMenus jQuery Bootstrap Addon CSS -->
-{#    <link href="{% static 'bower_components/smartmenus/src/addons/bootstrap/jquery.smartmenus.bootstrap.css' %}" rel="stylesheet">#}
+    <link href="{% static 'css/smartmenus/jquery.smartmenus.bootstrap.css' %}" rel="stylesheet">
   </head>
   <body style="padding-top:60px">
     {% cms_toolbar %}
@@ -24,13 +24,13 @@
       {% block content %}
       {% endblock content %}
       </div>
-       {% addtoblock "js" %}<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>{% endaddtoblock %}
-       {% addtoblock "js" %}<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>{% endaddtoblock %}
+       {% addtoblock "js" %}<script src="{% static 'js/jquery/jquery.js' %}"></script>{% endaddtoblock %}
+       {% addtoblock "js" %}<script src="{% static 'js/bootstrap/bootstrap.js' %}"></script>{% endaddtoblock %}
     <!-- SmartMenus jQuery plugin -->
-{#    <script type="text/javascript" src="{% static 'bower_components/smartmenus/src/jquery.smartmenus.js' %}"></script>#}
+    {% addtoblock "js" %}<script type="text/javascript" src="{% static 'js/smartmenus/jquery.smartmenus.min.js' %}"></script>{% endaddtoblock %}
 
     <!-- SmartMenus jQuery Bootstrap Addon -->
-{#    <script type="text/javascript" src="{% static 'bower_components/smartmenus/src/addons/bootstrap/jquery.smartmenus.bootstrap.js' %}"></script>#}
+    {% addtoblock "js" %}<script type="text/javascript" src="{% static 'js/smartmenus/jquery.smartmenus.bootstrap.min.js' %}"></script>{% endaddtoblock %}
     {% render_block "js" %}
   </body>
 </html>

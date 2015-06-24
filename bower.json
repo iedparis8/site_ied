@@ -7,14 +7,24 @@
   ],
   "license": "MIT",
   "homepage": "iedparis8.net",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
+
   "dependencies": {
-    "smartmenus": "~0.9.7"
+    "smartmenus": "~0.9.7",
+    "jquery": "1.11.3",
+    "bootstrap": "~3.3.5"
+  },
+  "install": {
+    "path": {
+      "css": "site_ied_plugins/static/css",
+      "js": "site_ied_plugins/static/js",
+      "/[sc|le]ss$/": "site_ied_plugins/static/css"
+    },
+    "sources": {
+      "smartmenus": [
+      "site_ied_plugins/static/bower_components/smartmenus/dist/addons/bootstrap/jquery.smartmenus.bootstrap.min.js",
+      "site_ied_plugins/static/bower_components/smartmenus/dist/addons/bootstrap/jquery.smartmenus.bootstrap.css",
+      "site_ied_plugins/static/bower_components/smartmenus/dist/jquery.smartmenus.min.js"
+    ]
+    }
   }
 }

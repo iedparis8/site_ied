@@ -2,6 +2,7 @@
 *.pot
 *.pyc
 .idea
+bower_components
 .vagrant
 site_ied/local_settings.py
 site_ied/bo_local_settings.py
