@@ -73,6 +73,7 @@ SITE_ID = 1
 
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
+    'aldryn_boilerplates.template_loaders.AppDirectoriesLoader',
     'django.template.loaders.app_directories.Loader',
     'django.template.loaders.eggs.Loader'
 )
@@ -103,12 +104,22 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.tz',
     'sekizai.context_processors.sekizai',
     'django.core.context_processors.static',
-    'cms.context_processors.cms_settings'
+    'cms.context_processors.cms_settings',
+    'aldryn_boilerplates.context_processors.boilerplate',
+
 )
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    # important! place right before django.contrib.staticfiles.finders.AppDirectoriesFinder
+    'aldryn_boilerplates.staticfile_finders.AppDirectoriesFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+]
+
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'site_ied', 'templates'),
 )
+ALDRYN_BOILERPLATE_NAME = 'bootstrap3'
 
 INSTALLED_APPS = (
     'site_ied_plugins',
@@ -136,12 +147,23 @@ INSTALLED_APPS = (
     'djangocms_picture',
     'djangocms_teaser',
     'djangocms_video',
+    'aldryn_apphooks_config',
+    'aldryn_boilerplates',
+    'aldryn_categories',
+    'aldryn_newsblog',
+    'aldryn_people',
+    'aldryn_reversion',
+    'easy_thumbnails',
+    'filer',
+    'parler',
+    'sortedm2m',
+    'taggit',
     'duck_inscription',
     'django_apogee',
     'mailrobot',
     'duck_utils',
     'reversion',
-
+    'aldryn_bootstrap3',
     'django_extensions'
 )
 
@@ -178,8 +200,10 @@ CMS_LANGUAGES = {
 
 CMS_TEMPLATES = (
     ## Customize this
-    ('page.html', 'Page'),
-    ('feature.html', 'Page with Feature')
+    ('fullwidth.html', 'fullwidth'),
+    ('sidebar_left.html', 'sidebar_left'),
+    ('sidebar_right.html', 'sidebar_right'),
+    ('tpl_home.html', 'tpl_home'),
 )
 
 CMS_PERMISSION = True
@@ -199,6 +223,15 @@ MIGRATION_MODULES = {
     'djangocms_teaser': 'djangocms_teaser.migrations_django',
     'djangocms_video': 'djangocms_video.migrations_django'
 }
+
+THUMBNAIL_PROCESSORS = (
+    'easy_thumbnails.processors.colorspace',
+    'easy_thumbnails.processors.autocrop',
+    # 'easy_thumbnails.processors.scale_and_crop',
+    'filer.thumbnail_processors.scale_and_crop_with_subject_location',
+    'easy_thumbnails.processors.filters',
+    'easy_thumbnails.processors.background',
+)
 
 try:
     from . import local_settings
