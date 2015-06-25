@@ -1,0 +1,12 @@
+    {% for step in instance.step.all %}
+        <table class="table table-bordered">
+            <tr>
+                <td>{{ step.label }}</td>
+                <td>date</td>
+            </tr>
+            <tr>
+                <td>ouverture equivalence</td>
+                <td>{{ step.date_ouverture_equivalence|date:'d/m/Y' }}</td>
+            </tr>
+        </table>
+    {% endfor %}
