@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import os
 gettext = lambda s: s
 DATA_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -200,10 +202,10 @@ CMS_LANGUAGES = {
 
 CMS_TEMPLATES = (
     ## Customize this
-    ('fullwidth.html', 'fullwidth'),
-    ('sidebar_left.html', 'sidebar_left'),
-    ('sidebar_right.html', 'sidebar_right'),
-    ('tpl_home.html', 'tpl_home'),
+    ('site_ied/fullwidth.html', 'Page'),
+    ('site_ied/sidebar_left.html', 'Page avec Sidebar à Gauche'),
+    ('site_ied/sidebar_right.html', 'Page avec sidebar à Droite'),
+    ('site_ied/tpl_home.html', 'tpl_home'),
 )
 
 CMS_PERMISSION = True
@@ -232,6 +234,46 @@ THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.filters',
     'easy_thumbnails.processors.background',
 )
+
+CKEDITOR_SETTINGS = {
+    'language': '{{ language }}',
+    'toolbar_CMS': [
+        ['Undo', '-', 'Redo'],
+        ['cmsplugins', '-', 'ShowBlocks'],
+        ['Format', 'Styles', 'Blockquote'],
+        ['TextColor', 'BGColor', '-', 'PasteText', 'PasteFromWord'],
+        ['Maximize', ''],
+        '/',
+        ['Bold', 'Italic', 'Underline', '-', 'Subscript', 'Superscript', '-', 'RemoveFormat'],
+        ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+        ['HorizontalRule'],
+        ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Table'],
+        ['Source']
+    ],
+    'skin': 'office2013',
+    # 'default': {
+        # 'basicEntities': False,
+        # 'entities': False,
+        # 'htmlbase': False,
+        # 'entities_latin': False,
+        # 'entities_greek': False,
+        # 'removeFormatTags': '',
+        # 'removeFormatAttributes': '',
+        # 'autoParagraph': False,
+        # 'fullPage': True,
+        # 'protectedSource': ['/{% load .* %}'],
+        # 'contentsLanguage': 'fr',
+        # "removePlugins": "stylesheetparser, htmlwriter",
+        # 'allowedContent': True,
+        # 'clipboard_defaultContentType': 'text',
+        # 'fillEmptyBlocks': False,
+        # 'forcePasteAsPlainText': True,
+    # },
+}
+
+# Bug fixed: <mark> tag was escaped into &lt;mark&gt;
+# Solution: Add the following
+TEXT_HTML_SANITIZE = False
 
 try:
     from . import local_settings
