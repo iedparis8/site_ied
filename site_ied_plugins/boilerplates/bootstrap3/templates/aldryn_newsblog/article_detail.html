@@ -1,0 +1,27 @@
+{% extends "aldryn_newsblog/fullwidth.html" %}
+{% load i18n cms_tags apphooks_config_tags %}
+
+{% block title %}{{ article.title }} - {{ block.super }}{% endblock %}
+
+{% block newsblog_content %}
+    {% render_placeholder view.config.placeholder_detail_top %}
+    {% include "aldryn_newsblog/includes/article.html" with detail_view="true" %}
+    {% render_placeholder view.config.placeholder_detail_bottom %}
+{% endblock %}
+
+{% block newsblog_footer %}
+    <ul class="pager">
+        {% if prev_article %}
+            <li class="previous"><a href="{{ prev_article.get_absolute_url }}"><span aria-hidden="true">&larr;</span> {% trans "Précédant" %}</a></li>
+        {% else %}
+            <li class="previous"><span class="text-muted"><span aria-hidden="true">&larr;</span> {% trans "Précédant" %}</span></li>
+        {% endif %}
+        <li><span class="pager-back">– <a href="{% namespace_url "article-list" %}">{% trans "Toutes nos actualités" %}</a> –</span></li>
+        {% if next_article %}
+            <li class="next"><a href="{{ next_article.get_absolute_url }}">{% trans "Suivant" %} <span aria-hidden="true">&rarr;</span></a></li>
+        {% else %}
+            <li class="next"><span class="text-muted">{% trans "Suivant" %} <span aria-hidden="true">&rarr;</span></span></li>
+        {% endif %}
+    </ul>
+    {% render_placeholder view.config.placeholder_detail_footer %}
+{% endblock %}

@@ -1,0 +1,99 @@
+{% load i18n apphooks_config_tags cms_tags sekizai_tags staticfiles thumbnail %}
+{% load url from future %}
+{% load siteied_tags %}
+
+<!-- masonry grid item start -->
+{% if not detail_view %}
+    <div class="masonry-grid-item col-sm-6 col-md-6">
+{% endif %}
+        <!-- blogpost start -->
+        <article class="card shadow bordered">
+            {% block newsblog_visual %}
+                {% if article.featured_image_id %}
+                    <div class="overlay-container">
+                        {% if not detail_view %}
+                            <a href="{{ article.get_absolute_url }}">
+                        {% endif %}
+                        <img src="{% thumbnail article.featured_image.image 800x450 crop subject_location=article.featured_image.subject_location %}" alt="{{ article.featured_image.alt }}" class="img-responsive">
+                        {% if not detail_view %}
+                            </a>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endblock newsblog_visual %}
+
+
+            {% block newsblock_title %}
+                <header class="back-color {{ article.id|get_color }}">
+                    <h2>
+                        {% if not detail_view %}
+                            <a href="{% namespace_url "article-detail" article.slug namespace=namespace default='' %}">{% render_model article "title" %}</a>
+                        {% else %}
+                            {% render_model article "title" %}
+                        {% endif %}
+                    </h2>
+                    <div class="post-info">
+                        <span class="post-date">
+                            <i class="fa fa-calendar-o"></i>
+                            {{ article.publishing_date|date:"j F Y" }}
+                        </span>
+                        {% if article.categories.all %}
+                            <span class="category">
+                                <i class="fa fa-folder"></i>
+                                {% for category in article.categories.all %}
+                                    <a href="{% namespace_url "article-list-by-category" category.slug namespace=namespace default='' %}">{{ category.name }}</a>{% if not forloop.last %}, {% endif %}
+                                {% endfor %}
+                            </span>
+                        {% endif %}
+                        {% if article.author and article.author.slug %}
+                            <span class="submitted"><i class="fa fa-user"></i> par
+                                <a href="{% namespace_url "article-list-by-author" article.author.slug namespace=namespace default='' %}">{{ article.author.name }}</a>
+                            </span>
+                        {% endif %}
+                    </div>
+                </header>
+            {% endblock newsblock_title %}
+
+            {% block newsblog_meta %}
+                <div class="blogpost-content">
+                    {% if detail_view %}
+                        {% render_model article "lead_in" %}
+                    {% else %}
+                        {% render_model article "lead_in" "" "" "paragraph:1" %}
+                    {% endif %}
+                </div>
+            {% endblock newsblog_meta %}
+
+
+
+            {% block newsblog_content %}
+                {% if detail_view %}
+                    <div class="content">
+                        {% render_placeholder article.content language placeholder_language %}
+                    </div>
+                {% endif %}
+            {% endblock newsblog_content %}
+
+            {% block newsblog_categories %}
+                <footer>
+                {% if not detail_view %}
+                    <a href="{% namespace_url "article-detail" article.slug namespace=namespace default='' %}" class="btn btn-default btn-more">Lire la suite</a>
+                {% endif %}
+                {% if article.tags.all and detail_view %}
+                    <span class="tags">
+                        <i class="fa fa-tags"></i>
+                        {% for tag in article.tags.all %}
+                            <a href="{% namespace_url safe "article-list-by-tag" tag.slug namespace=namespace default='' %}">{{ tag.name }}{% if not forloop.last %}, {% endif %}</a>
+                        {% endfor %}
+                    </span>
+                {% endif %}
+                </footer>
+            {% endblock newsblog_categories %}
+
+
+        </article>
+        <!-- blogpost end -->
+{% if not detail_view %}
+    </div>
+{% endif %}
+<!-- masonry grid item end -->

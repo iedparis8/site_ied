@@ -1,0 +1,26 @@
+{% extends "aldryn_newsblog/base.html" %}
+{% load i18n cms_tags staticfiles sekizai_tags %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="main col-md-12">
+                <!-- page-title start -->
+                <!-- ================ -->
+                {% if view.show_header %}
+                    {% render_placeholder view.config.placeholder_base_top %}
+                {% endif %}
+                <!-- page-title end -->
+
+                <!-- masonry grid start -->
+                <!-- ================ -->
+                {% block newsblog_title %}{% endblock %}
+                {% block newsblog_content %}{% endblock %}
+                {% block newsblog_footer %}{% endblock %}
+                <!-- masonry grid end -->
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% load i18n apphooks_config_tags %}
+
+<div class="masonry-grid row">
+    {% for article in article_list %}
+        {% include "aldryn_newsblog/includes/article.html" with namespace=instance.app_config.namespace %}
+    {% empty %}
+        <p class="well">{% trans "No items available" %}</p>
+    {% endfor %}
+    <div class="masonry-grid-item col-sm-12 col-md-12">
+        <div class="card more-card">
+            <a class="btn btn-default btn-lg btn-block btn-block-more" href="{% namespace_url "article-list" namespace=instance.app_config.namespace default='' %}">
+                <div class="text-center">
+                    Lire plus +
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
