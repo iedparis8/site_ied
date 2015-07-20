@@ -1,12 +1,12 @@
 {% for ance in ancestors %}
 <li>
     {% if forloop.first %}
-<span class="glyphicon glyphicon-home"></span>
+        <i class="fa fa-home"></i>
         <a href="{{ ance.get_absolute_url }}">{{ ance.get_menu_title }}</a>
 	{% elif not forloop.last %}
-    <a href="{{ ance.get_absolute_url }}">{{ ance.get_menu_title }}</a>
+        <a href="{{ ance.get_absolute_url }}">{{ ance.get_menu_title }}</a>
 	{% else %}
-	<span class="active">{{ ance.get_menu_title }}</span>
+	    <span class="active">{{ ance.get_menu_title }}</span>
 	{% endif %}
 </li>
 {% endfor %}

@@ -1,3 +1,300 @@
-.breadcrumb {
-    font-size: 13px;
+/* 2 Custom
+----------------------------------------------------------------------------- */
+
+@primary-dark:      #3F51B5;
+
+@blue:              #3498db;
+@red:               #e74c3c;
+@green:             #2ecc71;
+@orange:            #f39c12;
+@violet:            #9b59b6;
+@deep-grey:         #34495e;
+
+@navbar-shadow:     0px 1px 4px rgba(0, 0, 0, 0.3);
+@breadcrumb-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+@card-shadow:       0px 3px 1px -2px rgba(0, 0, 0, 0.14),
+                    0px 2px 2px 0px rgba(0, 0, 0, 0.098),
+                    0px 1px 5px 0px rgba(0, 0, 0, 0.082);
+                    //0px 1px 1px rgba(0, 0, 0, 0.15);
+
+@background-color:  #EDECEC;         //#EDECEC
+@card-color: #fff;
+@card-header-color: #F7F7F7;
+
+@card-separator:    1px solid rgba(0, 0, 0, 0.1);
+@card-padding:      26px;
+
+@header-text-color: black;
+@header-sub-color: #aaa;
+
+@header-text-inverse: #fff;
+@header-sub-inverse: #fff;
+
+// Shadow copied by google card
+// 0px 3px 1px -2px rgba(0, 0, 0, 0.14), 0px 2px 2px 0px rgba(0, 0, 0, 0.098), 0px 1px 5px 0px rgba(0, 0, 0, 0.082);
+
+
+/*
+ * Background colors used for the headers of cards
+ */
+
+.back-color {
+  h2 {
+    color: @header-text-inverse !important;
+    a {
+      color: @header-text-inverse !important;
+    }
+  }
+  .post-info {
+    color: @header-sub-inverse !important;
+    a {
+      color: @header-sub-inverse !important;
+    }
+  }
 }
+
+.back-blue {
+  background-color: @blue !important;
+}
+.back-red {
+  background-color: @red !important;
+}
+.back-orange {
+  background-color: @orange !important;
+}
+.back-green {
+  background-color: @green !important;
+}
+.back-violet {
+  background-color: @violet !important;
+}
+.back-grey {
+  background-color: @deep-grey !important;
+}
+
+h1 {
+  font-size: 15px;
+  color: #777;
+  margin: 0 @card-padding @card-padding;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+
+/*
+ * Navbar, Breadcrumb & Main container
+ */
+
+.main-container {
+  padding-top: 30px;
+  background-color: @background-color;
+}
+
+.navbar {
+  .box-shadow(@navbar-shadow);
+}
+
+.breadcrumb {
+  font-size: 12px;
+  margin-bottom: 0px;
+  padding-left: 0px;
+  i {
+    padding-right: 8px;
+  }
+}
+
+.breadcrumb-container {
+
+  .box-shadow(@breadcrumb-shadow);
+  background-color: @breadcrumb-bg;
+}
+
+.breadcrumb-fixed {
+  position: fixed;
+  right: 0px;
+  left: 0px;
+  z-index: 1029;
+  margin-bottom: 30px;
+}
+
+.alert .icon {
+    margin-right: 5px;
+}
+
+.navbar-brand {
+    padding-top: 12px;
+    img {
+        height: 40px;
+    }
+}
+
+.fullwidth {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+hr {
+  margin-top: 0px;
+}
+
+
+/* Blog pages
+---------------------------------- */
+
+.btn-more {
+  border: none;
+  .box-shadow(none);
+  padding: 6px 10px;
+  color: @primary-dark;
+  &:hover, &:focus, &:active {
+    color: @primary-dark;
+  }
+}
+
+.btn-block-more {
+  border: none;
+  .box-shadow(none);
+  transition: all 0.05s ease 0s;
+  padding: @card-padding - 4px @card-padding;
+  color: @primary-dark;
+  &:hover, &:focus, &:active {
+    background-color: @blue;
+    color: #fff;
+  }
+}
+
+.blogpost, .card {
+  background-color: @card-color;
+  .box-shadow(@card-shadow);
+  margin: 0 0 40px;
+  header {
+    background-color: @card-header-color;
+    padding: @card-padding;
+    h2 {
+      color: @header-text-color;
+      font-weight: 300;
+      text-transform: none;
+      margin-top: 0;
+      margin-bottom: 10px;
+      a {
+        color: @header-text-color;
+      }
+    }
+  }
+  .post-info {
+    font-size: 12px;
+    color: @header-sub-color;
+    font-weight: 400;
+    >span {
+        margin-right: 5px;
+        display: inline-block;
+    }
+    a {
+        color: @header-sub-color;
+    }
+  }
+  .blogpost-content {
+    border-bottom: @card-separator;
+    padding: @card-padding @card-padding 1px;
+  }
+  .row .blogpost-content {
+    padding-bottom: 0;
+  }
+  footer {
+    padding: @card-padding - 4px @card-padding;
+    color: #aaa;
+    border-top: 1px solid #eaeaea;
+  }
+  .row + footer {
+    padding: 10px 0;
+  }
+  .btn-more {
+    margin: -10px -10px;
+  }
+}
+
+.more-card {
+  background-color: transparent;
+}
+
+/*
+.blogpost:hover {
+  .box-shadow(0 0 6px rgba(0,0,0,.16),0 6px 12px rgba(0,0,0,.2););
+}*/
+
+.blogpost.full, .card.full {
+	margin-bottom: 30px;
+	header {
+		padding: 0 0 15px 0;
+	}
+	.blogpost-content {
+		padding:0 0 5px;
+	}
+	footer {
+		padding: 10px 0;
+	}
+}
+/* Medium devices (desktops, tablets, 992px and up) */
+@media (min-width: 992px) {
+	.blogpost .row, .card .row {
+		header {
+			padding-top: 0;
+		}
+	}
+	.blogpost .row + footer, .card .row + footer {
+		margin-top: 15px;
+	}
+}
+
+/* Blog Masonry Grid
+---------------------------------- */
+.masonry-grid-item {
+	.blogpost, .card {
+		footer {
+			//padding-top: 0px;
+			border-top: none;
+		}
+		header {
+			h2 {
+				font-size: 22px;
+			}
+		}
+	}
+}
+
+.light-gray-bg {
+  background-color: #fafafa;
+  border-top: 1px solid #f3f3f3;
+  border-bottom: 1px solid #f3f3f3;
+}
+.footer-top.light-gray-bg {
+  background-color: #f5f5f5;
+  border-top: 1px solid #eaeaea;
+  border-bottom: 1px solid #eaeaea;
+}
+.light-gray-bg.default-hovered:hover * {
+	color: #ffffff;
+}
+.light-gray-bg.default-hovered:hover {
+	.btn-gray-transparent:hover {
+		border-color: @gray-dark;
+	}
+}
+.light-gray-bg.form-block h2,
+.light-gray-bg.form-block a,
+.light-gray-bg.form-block a:hover,
+.light-gray-bg.form-block {
+	color: @gray;
+}
+/*
+.bordered {
+	border: 1px solid #f1f1f1;
+	.border-radius(3px);
+}
+.dark-bg .bordered {
+	border: 1px solid #555555;
+}
+*/
+
+
+

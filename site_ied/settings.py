@@ -73,12 +73,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, '../static_tel').replace('\\', '/')
 
 SITE_ID = 1
 
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'aldryn_boilerplates.template_loaders.AppDirectoriesLoader',
-    'django.template.loaders.app_directories.Loader',
-    'django.template.loaders.eggs.Loader'
-)
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -86,7 +80,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.locale.LocaleMiddleware',
-    'django.middleware.doc.XViewMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'cms.middleware.user.CurrentUserMiddleware',
@@ -95,21 +88,37 @@ MIDDLEWARE_CLASSES = (
     'cms.middleware.language.LanguageCookieMiddleware'
 )
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.contrib.auth.context_processors.auth',
-    'django.contrib.messages.context_processors.messages',
-    'django.core.context_processors.i18n',
-    'django.core.context_processors.debug',
-    'django.core.context_processors.request',
-    'django.core.context_processors.media',
-    'django.core.context_processors.csrf',
-    'django.core.context_processors.tz',
-    'sekizai.context_processors.sekizai',
-    'django.core.context_processors.static',
-    'cms.context_processors.cms_settings',
-    'aldryn_boilerplates.context_processors.boilerplate',
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates').replace('\\', '/'),
 
-)
+        ],
+        'OPTIONS': {
+            'context_processors': [
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.contrib.messages.context_processors.messages',
+                "django.core.context_processors.request",
+                "sekizai.context_processors.sekizai",
+
+                'cms.context_processors.cms_settings',
+                'aldryn_boilerplates.context_processors.boilerplate',
+            ],
+            'loaders': [
+                 'django.template.loaders.filesystem.Loader',
+                # important! place right before django.template.loaders.app_directories.Loader
+                'aldryn_boilerplates.template_loaders.AppDirectoriesLoader',
+                'django.template.loaders.app_directories.Loader',
+            ]
+        },
+    },
+]
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     # important! place right before django.contrib.staticfiles.finders.AppDirectoriesFinder
@@ -118,9 +127,6 @@ STATICFILES_FINDERS = [
 ]
 
 
-TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'site_ied', 'templates'),
-)
 ALDRYN_BOILERPLATE_NAME = 'bootstrap3'
 
 INSTALLED_APPS = (
@@ -143,7 +149,7 @@ INSTALLED_APPS = (
     'djangocms_column',
     'djangocms_file',
     'djangocms_flash',
-    'djangocms_googlemap',
+    # 'djangocms_googlemap',
     'djangocms_inherit',
     'djangocms_link',
     'djangocms_picture',
@@ -166,7 +172,13 @@ INSTALLED_APPS = (
     'duck_utils',
     'reversion',
     'aldryn_bootstrap3',
-    'django_extensions'
+    'django_extensions',
+    'cmsplugin_filer_file',
+    'cmsplugin_filer_folder',
+    'cmsplugin_filer_link',
+    'cmsplugin_filer_image',
+    'cmsplugin_filer_teaser',
+    'cmsplugin_filer_video'
 )
 
 LANGUAGES = (
@@ -223,7 +235,13 @@ MIGRATION_MODULES = {
     'djangocms_file': 'djangocms_file.migrations_django',
     'djangocms_picture': 'djangocms_picture.migrations_django',
     'djangocms_teaser': 'djangocms_teaser.migrations_django',
-    'djangocms_video': 'djangocms_video.migrations_django'
+    'djangocms_video': 'djangocms_video.migrations_django',
+    # 'cmsplugin_filer_file': 'cmsplugin_filer_file.migrations_django',
+    # 'cmsplugin_filer_folder': 'cmsplugin_filer_folder.migrations_django',
+    # 'cmsplugin_filer_link': 'cmsplugin_filer_link.migrations_django',
+    # 'cmsplugin_filer_image': 'cmsplugin_filer_image.migrations_django',
+    # 'cmsplugin_filer_teaser': 'cmsplugin_filer_teaser.migrations_django',
+    # 'cmsplugin_filer_video': 'cmsplugin_filer_video.migrations_django'
 }
 
 THUMBNAIL_PROCESSORS = (
@@ -234,6 +252,8 @@ THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.filters',
     'easy_thumbnails.processors.background',
 )
+
+THUMBNAIL_HIGH_RESOLUTION = True
 
 CKEDITOR_SETTINGS = {
     'language': '{{ language }}',

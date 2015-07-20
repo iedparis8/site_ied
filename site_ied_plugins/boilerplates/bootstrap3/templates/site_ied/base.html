@@ -7,28 +7,30 @@
     {% render_block "css" %}
 {#    {% addtoblock "css" %}<link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}">{% endaddtoblock %}#}
     {#    {% addtoblock "css" %}<link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap-theme.min.css' %}">{% endaddtoblock %}#}
-    {% addtoblock "css" %}<link rel="stylesheet" href="{% static 'css/paper_theme/bootstrap_theme.css' %}">{% endaddtoblock %}
+    {% addtoblock "css" %}<link rel="stylesheet" href="{% static 'css/bootstrap_theme.css' %}">{% endaddtoblock %}
     <!-- SmartMenus jQuery Bootstrap Addon CSS -->
     <link href="{% static 'css/smartmenus/jquery.smartmenus.bootstrap.css' %}" rel="stylesheet">
 </head>
-<body style="padding-top:60px">
+<body style="padding-top:64px">
     <div class="page-wrapper">
         {% cms_toolbar %}
         <div class="header-container" style="padding-bottom: 0px;">
             <header>
-                <div class="container">
-                    {% static_placeholder 'header' %}
-                </div>
-            </header>
-            <div class="container">
-                <div class="navbar navbar-inverse" role="navigation">
-                    <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav">
-                            {% show_menu 1 100 100 100 "menu/menu.html" %}
-                        </ul>
+                <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                    <div class="container" style="padding-right: 30px">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="/">
+                                <img alt="Brand" src="/static/images/logo_white.svg">
+                            </a>
+                        </div>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav navbar-right">
+                                {% show_menu 1 100 100 100 "menu/menu.html" %}
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </header>
         </div>
         <div class="breadcrumb-container">
             <div class="container">
@@ -58,10 +60,17 @@
             src="{% static 'js/smartmenus/jquery.smartmenus.min.js' %}"></script>{% endaddtoblock %}
 
     <!-- SmartMenus jQuery Bootstrap Addon -->
-    {% addtoblock "js" %}
-    <script type="text/javascript"
-            src="{% static 'js/smartmenus/jquery.smartmenus.bootstrap.min.js' %}"></script>{% endaddtoblock %}
+    {% addtoblock "js" %} <script type="text/javascript" src="{% static 'js/smartmenus/jquery.smartmenus.bootstrap.min.js' %}"></script> {% endaddtoblock %}
+
+
+    <!-- Isotope Masonry and its activation -->
+    {% addtoblock 'js' %} <script type="text/javascript" src="{% static 'js/isotope/isotope.pkgd.js' %}"></script> {% endaddtoblock %}
+    {% addtoblock 'js' %} <script type="text/javascript" src="{% static 'js/template.js' %}"></script> {% endaddtoblock %}
+    {% addtoblock 'js' %} <script type="text/javascript" src="{% static 'js/isotope/modulo-columns.js' %}"></script> {% endaddtoblock %}
+
     {% render_block "js" %}
+
+
 </body>
 </html>
 
