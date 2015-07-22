@@ -4,7 +4,7 @@
 {% block newsblog_content %}
     {% render_placeholder view.config.list_view_placeholder language placeholder_language %}
     {% if not detail_view %}
-        <div class="masonry-grid-fitrows row">
+        <div class="masonry-grid row">
     {% endif %}
         {% for article in article_list %}
             {% include "aldryn_newsblog/includes/article.html" %}

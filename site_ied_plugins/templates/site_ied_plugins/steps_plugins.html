@@ -1,12 +1,15 @@
-    {% for step in instance.step.all %}
-        <table class="table table-bordered">
-            <tr>
-                <td>{{ step.label }}</td>
-                <td>date</td>
-            </tr>
-            <tr>
-                <td>ouverture equivalence</td>
-                <td>{{ step.date_ouverture_equivalence|date:'d/m/Y' }}</td>
-            </tr>
-        </table>
+<table class="table table-bordered">
+    {% for row in rows %}
+    <tr>
+        {% for col in row %}
+            {% if forloop.first or forloop.parentloop.first %}
+                <td>{{ col }}</td>
+            {% elif instance.columns == 'tarifs' %}
+                <td>{{ col }} &euro;</td>
+            {% else %}
+                <td>{{ col|date:'d/m/Y G:m' }}</td>
+            {% endif %}
+        {% endfor %}
+    </tr>
     {% endfor %}
+</table>

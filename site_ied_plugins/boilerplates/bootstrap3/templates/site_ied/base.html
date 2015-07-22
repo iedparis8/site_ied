@@ -10,6 +10,9 @@
     {% addtoblock "css" %}<link rel="stylesheet" href="{% static 'css/bootstrap_theme.css' %}">{% endaddtoblock %}
     <!-- SmartMenus jQuery Bootstrap Addon CSS -->
     <link href="{% static 'css/smartmenus/jquery.smartmenus.bootstrap.css' %}" rel="stylesheet">
+    <!-- jQuery & Bootstrap -->
+    {% addtoblock "js" %} <script src="{% static 'js/jquery/jquery.js' %}"></script> {% endaddtoblock %}
+    {% addtoblock "js" %} <script src="{% static 'js/bootstrap/bootstrap.js' %}"></script> {% endaddtoblock %}
 </head>
 <body style="padding-top:64px">
     <div class="page-wrapper">
@@ -50,23 +53,27 @@
         </footer>
     </div>
 
-    {% addtoblock "js" %}
-    <script src="{% static 'js/jquery/jquery.js' %}"></script>{% endaddtoblock %}
-    {% addtoblock "js" %}
-    <script src="{% static 'js/bootstrap/bootstrap.js' %}"></script>{% endaddtoblock %}
     <!-- SmartMenus jQuery plugin -->
     {% addtoblock "js" %}
-    <script type="text/javascript"
-            src="{% static 'js/smartmenus/jquery.smartmenus.min.js' %}"></script>{% endaddtoblock %}
+        <script type="text/javascript" src="{% static 'js/smartmenus/jquery.smartmenus.min.js' %}"></script>
+    {% endaddtoblock %}
 
     <!-- SmartMenus jQuery Bootstrap Addon -->
-    {% addtoblock "js" %} <script type="text/javascript" src="{% static 'js/smartmenus/jquery.smartmenus.bootstrap.min.js' %}"></script> {% endaddtoblock %}
+    {% addtoblock "js" %}
+        <script type="text/javascript" src="{% static 'js/smartmenus/jquery.smartmenus.bootstrap.min.js' %}"></script>
+    {% endaddtoblock %}
 
 
     <!-- Isotope Masonry and its activation -->
-    {% addtoblock 'js' %} <script type="text/javascript" src="{% static 'js/isotope/isotope.pkgd.js' %}"></script> {% endaddtoblock %}
-    {% addtoblock 'js' %} <script type="text/javascript" src="{% static 'js/template.js' %}"></script> {% endaddtoblock %}
-    {% addtoblock 'js' %} <script type="text/javascript" src="{% static 'js/isotope/modulo-columns.js' %}"></script> {% endaddtoblock %}
+    {% addtoblock 'js' %}
+        <script type="text/javascript" src="{% static 'js/isotope/isotope.pkgd.js' %}"></script>
+    {% endaddtoblock %}
+    {% addtoblock 'js' %}
+        <script type="text/javascript" src="{% static 'js/template.js' %}"></script>
+    {% endaddtoblock %}
+    {% addtoblock 'js' %}
+        <script type="text/javascript" src="{% static 'js/isotope/modulo-columns.js' %}"></script>
+    {% endaddtoblock %}
 
     {% render_block "js" %}
 

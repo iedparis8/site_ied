@@ -158,8 +158,8 @@ INSTALLED_APPS = (
     'aldryn_apphooks_config',
     'aldryn_boilerplates',
     'aldryn_categories',
-    'aldryn_newsblog',
-    'aldryn_people',
+    'aldryn_newsblog',      # problem migration
+    'aldryn_people',        # problem migration
     'aldryn_reversion',
     'easy_thumbnails',
     'filer',
@@ -171,14 +171,15 @@ INSTALLED_APPS = (
     'mailrobot',
     'duck_utils',
     'reversion',
-    'aldryn_bootstrap3',
+    'aldryn_bootstrap3',    # problem migration
     'django_extensions',
     'cmsplugin_filer_file',
     'cmsplugin_filer_folder',
     'cmsplugin_filer_link',
     'cmsplugin_filer_image',
     'cmsplugin_filer_teaser',
-    'cmsplugin_filer_video'
+    'cmsplugin_filer_video',
+    'cmsplugin_tabs'
 )
 
 LANGUAGES = (
@@ -294,7 +295,7 @@ CKEDITOR_SETTINGS = {
 # Bug fixed: <mark> tag was escaped into &lt;mark&gt;
 # Solution: Add the following
 TEXT_HTML_SANITIZE = False
-
+CENTRE_SECU = (('', '------'), ('SMEREP', 'SMEREP'), ('LMDE', 'LMDE'))
 try:
     from . import local_settings
     from .local_settings import *

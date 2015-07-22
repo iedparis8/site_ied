@@ -1,6 +1,33 @@
 /* 2 Custom
 ----------------------------------------------------------------------------- */
 
+/*
+ * Material Colors
+ */
+@m-white:                  #ffffff;
+@m-black:                  #000000;
+@m-blue:                   #2196F3;
+@m-red:                    #F44336;
+@m-purple:                 #9C27B0;
+@m-deeppurple:             #673AB7;
+@m-lightblue:              #03A9F4;
+@m-cyan:                   #00BCD4;
+@m-teal:                   #009688;
+@m-green:                  #4CAF50;
+@m-lightgreen:             #8BC34A;
+@m-lime:                   #CDDC39;
+@m-yellow:                 #FFEB3B;
+@m-amber:                  #FFC107;
+@m-orange:                 #FF9800;
+@m-deeporange:             #FF5722;
+@m-gray:                   #9E9E9E;
+@m-bluegray:               #607D8B;
+@m-indigo:                 #3F51B5;
+@m-pink:                   #E91E63;
+@m-brown:                  #795548;
+
+
+
 @primary-dark:      #3F51B5;
 
 @blue:              #3498db;
@@ -32,6 +59,150 @@
 
 // Shadow copied by google card
 // 0px 3px 1px -2px rgba(0, 0, 0, 0.14), 0px 2px 2px 0px rgba(0, 0, 0, 0.098), 0px 1px 5px 0px rgba(0, 0, 0, 0.082);
+
+
+h1 {
+  font-size: 15px;
+  color: #777;
+  margin: 0 @card-padding @card-padding;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+/*
+p {
+  padding: @card-padding;
+  background-color: #fff;
+  margin-bottom: 0px;
+}
+
+p+p {
+  padding-top: 0px;
+}
+*/
+
+
+.m-tab {
+    background-color: white;
+    //padding-left: @card-padding;
+    border-bottom: 1px solid #DDD;
+    & > li {
+
+        & > a {
+            font-size: 13px;
+            display: inline-block;
+            color: #7a7a7a;
+            text-transform: uppercase;
+            position: relative;
+            width: 100%;
+            .transition(all);
+            .transition-duration(250ms);
+            font-weight: 500;
+
+            &:after {
+                content: "";
+                height: 2px;
+                position: absolute;
+                width: 100%;
+                left: 0;
+                bottom: 0;
+                .transition(all);
+                .transition-duration(250ms);
+                .scale(0);
+            }
+
+            @media (min-width: @screen-sm-min) {
+                padding: 15px @card-padding;
+            }
+
+            @media (max-width: @screen-sm-min) {
+                padding: 15px 8px;
+            }
+        }
+
+        &.active {
+            & > a {
+                color: #000;
+
+                &:after {
+                    .scale(1);
+                }
+                &:hover, &:focus {
+                    color: #000;
+                }
+            }
+        }
+    }
+
+    &.tab-nav-right {
+        text-align: right;
+    }
+
+    &.tn-justified {
+        & > li {
+            display: table-cell;
+            width: 1%;
+            text-align: center;
+        }
+    }
+
+    &.tn-icon {
+        & > li {
+            .md {
+                font-size: 22px;
+                line-height: 100%;
+                min-height: 25px;
+            }
+        }
+    }
+
+    &:not([data-tab-color]) {
+        & > li > a:after {
+            background: @m-blue;
+        }
+    }
+
+    &[data-tab-color="green"] {
+        & > li > a:after {
+            background: @m-green;
+        }
+    }
+
+    &[data-tab-color="red"] {
+        & > li > a:after {
+            background: @m-red;
+        }
+    }
+
+    &[data-tab-color="teal"] {
+        & > li > a:after {
+            background: @m-teal;
+        }
+    }
+
+    &[data-tab-color="amber"] {
+        & > li > a:after {
+            background: @m-amber;
+        }
+    }
+
+    &[data-tab-color="black"] {
+        & > li > a:after {
+            background: @m-black;
+        }
+    }
+
+    &[data-tab-color="cyan"] {
+        & > li > a:after {
+            background: @m-cyan;
+        }
+    }
+}
+
+.tab-content {
+    padding: 20px 0;
+    background-color: white;
+}
 
 
 /*
@@ -72,14 +243,6 @@
   background-color: @deep-grey !important;
 }
 
-h1 {
-  font-size: 15px;
-  color: #777;
-  margin: 0 @card-padding @card-padding;
-  font-weight: 400;
-  text-transform: uppercase;
-}
-
 
 /*
  * Navbar, Breadcrumb & Main container
@@ -95,18 +258,24 @@ h1 {
 }
 
 .breadcrumb {
-  font-size: 12px;
+  font-size: 13px;
+  font-weight: 400;
+  color: #7C7C7C;
+  a, i {
+    color: #A9A9A9;
+  }
+  background-color: @background-color;
   margin-bottom: 0px;
-  padding-left: 0px;
+  padding: 11px 0px;
   i {
-    padding-right: 8px;
+    padding-right: 12px;
   }
 }
 
 .breadcrumb-container {
-
+  background-color: @background-color;      // @breadcrumb-bg
+  border-bottom: 1px solid #E5E5E5;
   .box-shadow(@breadcrumb-shadow);
-  background-color: @breadcrumb-bg;
 }
 
 .breadcrumb-fixed {
@@ -136,6 +305,8 @@ h1 {
 hr {
   margin-top: 0px;
 }
+
+
 
 
 /* Blog pages

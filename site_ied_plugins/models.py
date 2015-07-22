@@ -7,16 +7,16 @@ from cms.models import CMSPlugin
 from duck_inscription.models.wish_models import SettingsEtape
 
 COLUMNS = (
-    ('tout', 'Tout'),
-    ('equivalence', 'Équivalence'),
-    ('candidature', 'Candidature'),
-    ('inscription', 'Inscription'),
+    ('toutes_dates', 'Toutes les dates'),
+    ('equivalence', 'Dates Équivalence'),
+    ('candidature', 'Dates Candidature'),
+    ('inscription', 'Dates Inscription'),
     ('tarifs', 'Tarifs'),
 )
 
 TEMPLATES = (
-    ('horizontal.html', 'Horizontal'),
-    ('vertical.html', 'Vertical'),
+    ('horizontal', 'Horizontal'),
+    ('vertical', 'Vertical'),
 )
 
 @python_2_unicode_compatible
