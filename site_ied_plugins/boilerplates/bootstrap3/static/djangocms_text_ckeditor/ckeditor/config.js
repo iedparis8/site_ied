@@ -33,3 +33,48 @@ CKEDITOR.editorConfig = function( config ) {
 
 };
 
+//http://ckeditor.com/forums/CKEditor/Support-Bootstrap-Tables
+
+CKEDITOR.on('dialogDefinition', function (ev) {
+  var dialogName = ev.data.name;
+  var dialogDefinition = ev.data.definition;
+
+  if (dialogName == 'table' || dialogName == 'tableProperties') {
+
+    var info = dialogDefinition.getContents('info');
+
+    // Remove fields
+    var cellSpacing = info.remove('txtCellSpace');
+    var cellPadding = info.remove('txtCellPad');
+    var border = info.remove('txtBorder');
+    var width = info.remove('txtWidth');
+    var height = info.remove('txtHeight');
+    var align = info.remove('cmbAlign');
+
+    dialogDefinition.removeContents('advanced');
+
+    dialogDefinition.addContents( {
+        id: 'advanced',
+        label: 'Advanced',
+        accessKey: 'A',
+        elements: [
+            {
+                type: 'select',
+                id: 'selClass',
+                label: 'Select the table class',
+                items: [ [ 'table' ], [ 'table table-striped'], [ 'table table-bordered'], [ 'table table-hover'], [ 'table table-condensed'] ],
+                'default': 'table',
+                setup: function(a) {
+                    this.setValue(a.getAttribute("class") ||
+                    "")
+                },
+                commit: function(a, d) {
+                    this.getValue() ? d.setAttribute("class", this.getValue()) : d.removeAttribute("class")
+                }
+            }
+        ]
+    });
+  }
+
+});
+

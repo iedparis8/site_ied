@@ -60,6 +60,10 @@
 // Shadow copied by google card
 // 0px 3px 1px -2px rgba(0, 0, 0, 0.14), 0px 2px 2px 0px rgba(0, 0, 0, 0.098), 0px 1px 5px 0px rgba(0, 0, 0, 0.082);
 
+ul, ol {
+  padding-left: 14px;
+}
+
 
 h1 {
   font-size: 15px;
@@ -67,6 +71,15 @@ h1 {
   margin: 0 @card-padding @card-padding;
   font-weight: 400;
   text-transform: uppercase;
+}
+
+h2 {
+  margin: 0px 0px 23px;
+  line-height: 100%;
+  font-family: "roboto",sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  text-transform: none;
 }
 
 /*
@@ -81,6 +94,178 @@ p+p {
 }
 */
 
+.material-icons.md-18 { font-size: 18px; position: relative; bottom: -4px;}
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+.alert .icon {
+    margin-right: 5px;
+}
+
+.alert p {
+  padding: 0px;
+  margin: 0px;
+}
+
+/*
+ *  Accordion
+ */
+
+
+.panel {
+    box-shadow: none;
+    border: 0;
+}
+
+.panel-heading {
+    padding: 0;
+}
+
+.panel-title {
+    & > a {
+        padding: 10px 15px;
+        display: block;
+        font-size: 13px;
+    }
+}
+
+
+.panel-collapse {
+    .panel-heading {
+        position: relative;
+
+        .panel-title {
+            & > a {
+                padding: 8px 5px 16px 30px;
+                color: #000;
+                position: relative;
+
+                &:after,
+                &:before {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    height: 2px;
+                    width: 100%;
+                    content: "";
+                }
+
+                &:after {
+                    .scale(0);
+                    .transition(all);
+                    .transition-duration(300ms);
+                    .backface-visibility(hidden);
+                }
+            }
+        }
+
+        &:not(.active) .panel-title > a {
+            &:before {
+                background: #eee;
+            }
+        }
+
+        &:before,
+        &:after {
+            .material-icons
+            font-family: 'Material Icons';
+            font-size: 18px;
+            position: absolute;
+            left: 0;
+            .transition(all);
+            .transition-duration(300ms);
+            .backface-visibility(hidden);
+            top: 4px;
+        }
+
+        &:before {
+            content: "&#xE145;";
+            .scale(1);
+        }
+
+        &:after {
+            .scale(0);
+            content: "\f111";
+        }
+
+        &.active {
+            .panel-title > a {
+                &:after {
+                    .scale(1);
+                }
+            }
+
+            &:before {
+                .scale-rotate(0, -90deg);
+            }
+
+            &:after {
+                .scale(1);
+            }
+        }
+    }
+
+
+    .panel-body {
+        border-top: 0 !important;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+}
+
+.panel-collapse-color(@color) {
+    .panel-collapse {
+        .panel-heading {
+            &.active .panel-title > a {
+                &:after {
+                    background: @color;
+                }
+            }
+        }
+    }
+}
+
+.panel-group {
+    &:not([data-collapse-color]) {
+        .panel-collapse-color(@m-blue);
+    }
+
+    &[data-collapse-color="red"] {
+        .panel-collapse-color(@m-red);
+    }
+
+    &[data-collapse-color="green"] {
+        .panel-collapse-color(@m-green);
+    }
+
+    &[data-collapse-color="amber"] {
+        .panel-collapse-color(@m-amber);
+    }
+
+    &[data-collapse-color="teal"] {
+        .panel-collapse-color(@m-teal);
+    }
+
+    &[data-collapse-color="black"] {
+        .panel-collapse-color(@m-black);
+    }
+
+    &[data-collapse-color="cyan"] {
+        .panel-collapse-color(@m-cyan);
+    }
+}
+
+
+/*
+ *  Tabs
+ */
+
+.tabs-card {
+  background-color: @card-color;
+  .box-shadow(@card-shadow);
+  margin-bottom: 40px;
+}
 
 .m-tab {
     background-color: white;
@@ -112,7 +297,7 @@ p+p {
             }
 
             @media (min-width: @screen-sm-min) {
-                padding: 15px @card-padding;
+                padding: 15px @card-padding + 1px;
             }
 
             @media (max-width: @screen-sm-min) {
@@ -200,8 +385,7 @@ p+p {
 }
 
 .tab-content {
-    padding: 20px 0;
-    background-color: white;
+    padding: @card-padding;
 }
 
 
@@ -284,10 +468,6 @@ p+p {
   left: 0px;
   z-index: 1029;
   margin-bottom: 30px;
-}
-
-.alert .icon {
-    margin-right: 5px;
 }
 
 .navbar-brand {
