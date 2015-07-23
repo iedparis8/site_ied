@@ -154,6 +154,7 @@ INSTALLED_APPS = (
     'djangocms_style',
     'djangocms_column',
     'djangocms_file',
+    'djangocms_link',
     'djangocms_flash',
     'djangocms_googlemap',
     'djangocms_inherit',
