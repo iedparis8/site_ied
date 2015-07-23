@@ -153,7 +153,7 @@ INSTALLED_APPS = (
     'treebeard',
     'djangocms_style',
     'djangocms_column',
-    # 'djangocms_file',
+    'djangocms_file',
     'djangocms_flash',
     'djangocms_googlemap',
     'djangocms_inherit',
