@@ -69,7 +69,15 @@ class Etape(models.Model):
 
     @property
     def tarif_reins(self):
-        return self.etape.tarif_reins()
+        """
+
+        :return: frais de réins : frais si demi_tarif = false sinon frais/2
+        """
+        try:
+            tarif = self.frais if not self.demi_tarif else self.frais/2
+        except:
+            tarif = None
+        return tarif
 
     def __str__(self):
         return self.label
