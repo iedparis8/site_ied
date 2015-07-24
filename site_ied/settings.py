@@ -131,8 +131,14 @@ ALDRYN_BOILERPLATE_NAME = 'bootstrap3'
 
 INSTALLED_APPS = (
     'site_ied_plugins',
+    'django_extensions',
     'djangocms_admin_style',
-    'djangocms_text_ckeditor',
+    'django_apogee',
+    'duck_inscription',
+
+    'mailrobot',
+    'duck_utils',
+    #  probleme migration
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -147,39 +153,34 @@ INSTALLED_APPS = (
     'treebeard',
     'djangocms_style',
     'djangocms_column',
-    'djangocms_file',
-    'djangocms_flash',
-    # 'djangocms_googlemap',
-    'djangocms_inherit',
-    'djangocms_link',
-    'djangocms_picture',
-    'djangocms_teaser',
-    'djangocms_video',
-    'aldryn_apphooks_config',
-    'aldryn_boilerplates',
-    'aldryn_categories',
-    'aldryn_newsblog',      # problem migration
-    'aldryn_people',        # problem migration
-    'aldryn_reversion',
+    # 'djangocms_file',
+    # 'djangocms_link',
+    # 'djangocms_video',
     'easy_thumbnails',
     'filer',
     'parler',
+    'reversion',
     'sortedm2m',
     'taggit',
-    'duck_inscription',
-    'django_apogee',
-    'mailrobot',
-    'duck_utils',
-    'reversion',
-    'aldryn_bootstrap3',    # problem migration
-    'django_extensions',
-    'cmsplugin_filer_file',
-    'cmsplugin_filer_folder',
-    'cmsplugin_filer_link',
-    'cmsplugin_filer_image',
-    'cmsplugin_filer_teaser',
-    'cmsplugin_filer_video',
-    'cmsplugin_tabs'
+    'djangocms_flash',
+    'djangocms_googlemap',
+    'djangocms_inherit',
+
+    'aldryn_apphooks_config',
+    'aldryn_boilerplates',
+    # 'aldryn_categories',
+    # 'aldryn_newsblog',
+    # 'aldryn_people',
+    'aldryn_reversion',
+    'djangocms_text_ckeditor',
+    # 'cmsplugin_filer_file',
+    # 'cmsplugin_filer_folder',
+    # 'cmsplugin_filer_link',
+    # 'cmsplugin_filer_image',
+    # 'cmsplugin_filer_teaser',
+    # 'cmsplugin_filer_video',
+    # 'cmsplugin_tabs',
+    # 'aldryn_bootstrap3',
 )
 
 LANGUAGES = (
@@ -227,6 +228,7 @@ CMS_PLACEHOLDER_CONF = {}
 
 
 MIGRATION_MODULES = {
+    'aldryn_people': 'aldryn_people.migrations',
     'djangocms_column': 'djangocms_column.migrations_django',
     'djangocms_flash': 'djangocms_flash.migrations_django',
     'djangocms_googlemap': 'djangocms_googlemap.migrations_django',
