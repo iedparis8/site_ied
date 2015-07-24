@@ -46,12 +46,26 @@ class Etape(models.Model):
     @property
     def date_fermeture_candidature(self):
         return self.etape.date_fermeture_candidature
+
     @property
     def date_ouverture_inscription(self):
         return self.etape.date_ouverture_inscription
+
     @property
     def date_fermeture_inscription(self):
         return self.etape.date_fermeture_inscription
+
+    @property
+    def droit(self):
+        return self.etape.droit
+
+    @property
+    def demi_tarif(self):
+        return self.etape.demi_tarif
+
+    @property
+    def frais(self):
+        return self.etape.frais
 
     @property
     def tarif_reins(self):
