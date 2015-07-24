@@ -35,9 +35,31 @@ class Etape(models.Model):
     def date_ouverture_equivalence(self):
         return self.etape.date_ouverture_equivalence
 
+    @property
+    def date_fermeture_equivalence(self):
+        return self.etape.date_fermeture_equivalence
+
+    @property
+    def date_ouverture_candidature(self):
+        return self.etape.date_ouverture_candidature
+
+    @property
+    def date_fermeture_candidature(self):
+        return self.etape.date_fermeture_candidature
+    @property
+    def date_ouverture_inscription(self):
+        return self.etape.date_ouverture_inscription
+    @property
+    def date_fermeture_inscription(self):
+        return self.etape.date_fermeture_inscription
+
+    @property
+    def tarif_reins(self):
+        return self.etape.tarif_reins()
 
     def __str__(self):
         return self.label
+
 
 @python_2_unicode_compatible
 class StagesPlugin(CMSPlugin):
