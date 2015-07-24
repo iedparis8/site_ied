@@ -116,7 +116,8 @@ STATICFILES_FINDERS = [
     'aldryn_boilerplates.staticfile_finders.AppDirectoriesFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
-
+AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend',
+                           'duck_inscription_access.backend_auth.ModelBackend')
 
 ALDRYN_BOILERPLATE_NAME = 'bootstrap3'
 
