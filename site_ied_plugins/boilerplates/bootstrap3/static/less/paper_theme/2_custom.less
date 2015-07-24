@@ -82,6 +82,13 @@ h2 {
   text-transform: none;
 }
 
+h4 {
+  font-family: "roboto",sans-serif;;
+  color: #000;
+  line-height: 1.1;
+  font-weight: 500;
+}
+
 /*
 p {
   padding: @card-padding;
@@ -119,10 +126,15 @@ p+p {
 }
 
 .panel-heading {
+    background-color: transparent;
     padding: 0;
 }
 
+
 .panel-title {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 15px;
     & > a {
         padding: 10px 15px;
         display: block;
@@ -140,68 +152,56 @@ p+p {
                 padding: 8px 5px 16px 30px;
                 color: #000;
                 position: relative;
+                text-decoration: none;
+                border-bottom: 2px solid @brand-primary;
 
-                &:after,
-                &:before {
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                    height: 2px;
-                    width: 100%;
-                    content: "";
-                }
+                .transition(all);
+                .transition-duration(300ms);
+                .backface-visibility(hidden);
 
+                //&:after,
+                //&:before {
+                //    position: absolute;
+                //    bottom: 0;
+                //    left: 0;
+                //    height: 2px;
+                //    width: 100%;
+                //    content: "";
+                //}
+
+                &:before,
                 &:after {
-                    .scale(0);
+                    font-family: 'Material Icons';
+                    font-size: 18px;
+                    color: #5E5E5E;
+                    position: absolute;
+                    left: 0;
                     .transition(all);
                     .transition-duration(300ms);
                     .backface-visibility(hidden);
+                    top: 5px;
+                }
+
+                &:before {
+                    content: "\e15b";
+                    .scale(1);
+                }
+
+                &:after {
+                    .scale-rotate(0, -90deg);
+
+                    content: "\e145";
                 }
             }
-        }
+            & > a.collapsed {
+                border-bottom: 2px solid #EEE;
+                &:before {
+                    .scale(0);
+                }
 
-        &:not(.active) .panel-title > a {
-            &:before {
-                background: #eee;
-            }
-        }
-
-        &:before,
-        &:after {
-            .material-icons
-            font-family: 'Material Icons';
-            font-size: 18px;
-            position: absolute;
-            left: 0;
-            .transition(all);
-            .transition-duration(300ms);
-            .backface-visibility(hidden);
-            top: 4px;
-        }
-
-        &:before {
-            content: "&#xE145;";
-            .scale(1);
-        }
-
-        &:after {
-            .scale(0);
-            content: "\f111";
-        }
-
-        &.active {
-            .panel-title > a {
                 &:after {
                     .scale(1);
                 }
-            }
-
-            &:before {
-                .scale-rotate(0, -90deg);
-            }
-
-            &:after {
-                .scale(1);
             }
         }
     }
