@@ -25,6 +25,17 @@ class Etape(models.Model):
     cod_etp = models.CharField('Code etp', max_length=15)
     label = models.CharField('label', max_length=120, null=True)
 
+    @property
+    def etape(self):
+        if not hasattr(self, '_etape'):
+            self._etape = SettingsEtape.objects.using('duck_duck').get(cod_etp=self.cod_etp)
+        return self._etape
+
+    @property
+    def date_ouverture_equivalence(self):
+        return self.etape.date_ouverture_equivalence
+
+
     def __str__(self):
         return self.label
 
