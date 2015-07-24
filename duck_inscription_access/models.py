@@ -53,6 +53,7 @@ class SettingAnneeUni(AnneeUni):
 
     class Meta:
         managed = False
+        db_table = 'duck_inscription_settinganneeuni'
         verbose_name = 'Setting année universitaire'
         verbose_name_plural = u'Settings année universitaire'
 
@@ -101,6 +102,7 @@ class SettingsEtape(Etape):
 
     class Meta:
         managed = False
+        db_table = 'duck_inscription_settingsetape'
         verbose_name = 'Settings Etape'
         verbose_name_plural = 'Settings Etapes'
 
@@ -138,6 +140,7 @@ class DiplomeEtape(models.Model):
 
     class Meta:
         managed = False
+        db_table = 'duck_inscription_diplomeetape'
         verbose_name_plural = 'Diplomes'
         verbose_name = 'Diplômes'
 
@@ -150,6 +153,7 @@ class CursusEtape(models.Model):
     label = models.CharField('Label web', max_length=200, null=True)
 
     class Meta:
+        db_table = 'duck_inscription_cursusetape'
         managed = False
         verbose_name_plural = 'Cursus'
         verbose_name = 'Cursus'
@@ -165,6 +169,7 @@ class CentreGestionModel(models.Model):
 
     class Meta:
         managed = False
+        db_table = 'duck_inscription_centregestionmodel'
         verbose_name = u"Centre de gestion"
         verbose_name_plural = u"Centres de gestion"
 
