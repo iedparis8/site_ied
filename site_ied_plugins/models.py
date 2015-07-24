@@ -19,9 +19,18 @@ TEMPLATES = (
     ('vertical', 'Vertical'),
 )
 
+
+@python_2_unicode_compatible
+class Etape(models.Model):
+    cod_etp = models.CharField('Code etp', max_length=15)
+    label = models.CharField('label', max_length=120, null=True)
+
+    def __str__(self):
+        return self.label
+
 @python_2_unicode_compatible
 class StagesPlugin(CMSPlugin):
-    stages = models.ManyToManyField(SettingsEtape)
+    stages = models.ManyToManyField(Etape)
     columns = models.CharField(choices=COLUMNS, max_length=30)
     template = models.CharField(choices=TEMPLATES, max_length=30)
 
