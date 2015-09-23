@@ -57,7 +57,7 @@ TIME_ZONE = 'Etc/UTC'
 
 USE_I18N = False
 
-USE_L10N = False
+USE_L10N = True
 
 USE_TZ = True
 
@@ -166,6 +166,8 @@ INSTALLED_APPS = (
     'cmsplugin_filer_video',
     'cmsplugin_tabs',
     'aldryn_bootstrap3',
+    'listview',
+    'requests',
 )
 
 LANGUAGES = (

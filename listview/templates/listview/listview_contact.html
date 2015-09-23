@@ -1,0 +1,19 @@
+{% load sekizai_tags cms_tags %}
+{% load siteied_tags %}
+
+<div class="media">
+    <a class="lv-img profile-icon woman-{{ instance.color }}" href="#" alt=""></a>
+    <div class="media-body wrap-text">
+        <div class="lv-title">{{ name }} {{ surname }}</div>
+        <div class="lv-small">{{ function }}</div>
+        {% if phone %}
+            <span class="lv-tel">01 49 40 {{ phone }}</span>
+        {% endif %}
+        {% if phone and email %}
+            <span class="lv-tel"> - </span>
+        {% endif %}
+        {% if email %}
+            <span class="lv-email">{{ email }}</span>
+        {% endif %}
+    </div>
+</div>

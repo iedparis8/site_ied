@@ -3,7 +3,7 @@
 {% block content %}
 {% addtoblock "js" %}
 <script type="text/javascript">
-  $(document).ready(function() {
+    $(document).ready(function() {
     // Choose the first tab (for no match)
     $("#tab-{{ instance.id }} a:first").tab('show');
 
@@ -14,19 +14,32 @@
             return false;
         }
     });
-  });
+    });
+
+    //This is the code that makes tabs have equal sizes
+    $(document).ready(function() {
+        $( ".tabs-card" ).each(function( index ) {
+            var width =$(this).width();
+            var tabs_count = $(this).find('.m-tab>li').length;
+            if (tabs_count > 0) {
+                $(this).find('.m-tab>li').width(100/tabs_count+'%')
+            }
+        });
+    });
 </script>
 {% endaddtoblock %}
 {% endblock %}
 
 <div class="tabs-card">
     <ul class="nav nav-tabs m-tab" id="tab-{{ instance.id }}">
+        <!-- Comments are a hack to remove spaces between inline blocks
+        // Found in https://css-tricks.com/fighting-the-space-between-inline-block-elements/
     {% for tab in instance.child_plugin_instances %}
-      <li>
+      --><li>
         <a href="#tab-{{ tab.id }}" data-toggle="tab">{{ tab.title }}</a>
-      </li>
+      </li><!--
     {% endfor %}
-    </ul>
+    --></ul>
     <div class="tab-content">
     {% for tab in instance.child_plugin_instances %}
       <div class="tab-pane" id="tab-{{ tab.id }}">

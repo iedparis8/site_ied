@@ -5,9 +5,10 @@
 <!-- masonry grid item start -->
 {% if not detail_view %}
     <div class="masonry-grid-item col-sm-6 col-md-6">
+{#    <div class="masonry-grid-item">#}
 {% endif %}
         <!-- blogpost start -->
-        <article class="card shadow bordered">
+        <article class="blogpost shadow bordered">
             {% block newsblog_visual %}
                 {% if article.featured_image_id %}
                     <div class="overlay-container">
@@ -24,14 +25,14 @@
 
 
             {% block newsblock_title %}
-                <header class="back-color {{ article.id|get_color }}">
-                    <h2>
+                <header class="back-color back-{{ article.id|get_color }}">
+                    <h1>
                         {% if not detail_view %}
                             <a href="{% namespace_url "article-detail" article.slug namespace=namespace default='' %}">{% render_model article "title" %}</a>
                         {% else %}
                             {% render_model article "title" %}
                         {% endif %}
-                    </h2>
+                    </h1>
                     <div class="post-info">
                         <span class="post-date">
                             <i class="material-icons md-18">event_note</i>
@@ -59,7 +60,8 @@
                     {% if detail_view %}
                         {% render_model article "lead_in" %}
                     {% else %}
-                        {% render_model article "lead_in" "" "" "paragraph:1" %}
+                        {% render_model article "lead_in" %}
+{#                      {% render_model article "lead_in" "" "" "paragraph:3" %}  #}
                     {% endif %}
                 </div>
             {% endblock newsblog_meta %}
@@ -75,19 +77,21 @@
             {% endblock newsblog_content %}
 
             {% block newsblog_categories %}
-                <footer>
                 {% if not detail_view %}
-                    <a href="{% namespace_url "article-detail" article.slug namespace=namespace default='' %}" class="btn btn-default btn-more">Lire la suite</a>
+                    <footer>
+                        <a href="{% namespace_url "article-detail" article.slug namespace=namespace default='' %}" class="btn btn-default btn-more">Lire la suite</a>
+                    </footer>
                 {% endif %}
                 {% if article.tags.all and detail_view %}
-                    <span class="tags">
-                        <i class="fa fa-tags"></i>
-                        {% for tag in article.tags.all %}
-                            <a href="{% namespace_url safe "article-list-by-tag" tag.slug namespace=namespace default='' %}">{{ tag.name }}{% if not forloop.last %}, {% endif %}</a>
-                        {% endfor %}
-                    </span>
+                    <footer>
+                        <span class="tags">
+                            <i class="material-icons md-18">label_outline</i>
+                            {% for tag in article.tags.all %}
+                                <a href="{% namespace_url safe "article-list-by-tag" tag.slug namespace=namespace default='' %}">{{ tag.name }}{% if not forloop.last %}, {% endif %}</a>
+                            {% endfor %}
+                        </span>
+                    </footer>
                 {% endif %}
-                </footer>
             {% endblock newsblog_categories %}
 
 

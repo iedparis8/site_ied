@@ -28,14 +28,15 @@
 
 
 
-@primary-dark:      #3F51B5;
+@primary-bold:      #1976D2;          //Blue 700 // #3F51B5;
 
-@blue:              #3498db;
+@white:             #fff;
+@blue:              #2196f3;                //Now is blue 500 was #3498db
 @red:               #e74c3c;
-@green:             #2ecc71;
-@orange:            #f39c12;
+@green:             #4caf50;                //Now is Green 500 was #2ecc71;
+@orange:            #ff9800;                //Now is Orange 500 was #f39c12
 @violet:            #9b59b6;
-@deep-grey:         #34495e;
+@deep-grey:         #455a64;                //Now is Blue Grey 800 was #34495e
 
 @navbar-shadow:     0px 1px 4px rgba(0, 0, 0, 0.3);
 @breadcrumb-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
@@ -45,17 +46,36 @@
                     //0px 1px 1px rgba(0, 0, 0, 0.15);
 
 @background-color:  #EDECEC;         //#EDECEC
-@card-color: #fff;
+@card-color:        #fff;
 @card-header-color: #F7F7F7;
+
+@color-button-active:   @primary-bold;          //is dark blue, was black;
+@color-button:          @brand-primary;         //is blue, was #7a7a7a
+@color-body:            #212121;                //is black 87%
+@color-caption:         #727272;                //is black 54%
 
 @card-separator:    1px solid rgba(0, 0, 0, 0.1);
 @card-padding:      26px;
+@card-width:        860px;
+@half-card-width:   415px;
+@profile-img-size:   50px;
 
 @header-text-color: black;
 @header-sub-color: #aaa;
 
 @header-text-inverse: #fff;
 @header-sub-inverse: #fff;
+
+
+.lv-img, .media-body{
+  display:inline-block !important;
+  vertical-align: middle;
+}
+
+.cards-container {
+    margin: auto;
+    width: 894px;
+}
 
 // Shadow copied by google card
 // 0px 3px 1px -2px rgba(0, 0, 0, 0.14), 0px 2px 2px 0px rgba(0, 0, 0, 0.098), 0px 1px 5px 0px rgba(0, 0, 0, 0.082);
@@ -64,24 +84,46 @@ ul, ol {
   padding-left: 14px;
 }
 
-
+h1, h2, h3, h4 {
+    text-transform: none;
+    color: black;
+    font-family: "roboto",sans-serif;
+    line-height: 100%;
+  }
 h1 {
-  font-size: 15px;
-  color: #777;
-  margin: 0 @card-padding @card-padding;
-  font-weight: 400;
-  text-transform: uppercase;
+    font-size: 24px;
+    margin: 24px 0px 16px;
+    //color: @primary-bold;     //#777
+    //text-transform: uppercase;
 }
-
 h2 {
-  margin: 0px 0px 23px;
-  line-height: 100%;
-  font-family: "roboto",sans-serif;
-  font-size: 17px;
-  font-weight: 400;
-  text-transform: none;
+    font-size: 17px;
+    font-weight: 500;
+    margin: 30px 0px 16px; //was 24px 0 16px
+}
+h3 {
+    font-size: 15px;
+    font-weight: 500;
 }
 
+.card, .tabs-card, .blogpost {
+  h1:first-of-type, h2:first-of-type {
+    margin-top: 0px;
+  }
+}
+
+.tabs-card {
+
+  h1 {
+    font-size: 20px;
+    font-weight: 500;
+  }
+  h4 {
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+}
 h4 {
   font-family: "roboto",sans-serif;;
   color: #000;
@@ -113,6 +155,187 @@ p+p {
 .alert p {
   padding: 0px;
   margin: 0px;
+}
+
+/*
+ * Listview
+ */
+
+.profile-icon {
+    background: url(/static/images/profile_pics.png) no-repeat;
+    background-size: 200px;
+}
+.woman-orange {
+    background-position: -@profile-img-size*0 0;
+}
+.woman-green {
+    background-position: -@profile-img-size*1 0;
+}
+.woman-blue {
+    background-position: -@profile-img-size*2 0;
+}
+.woman-grey {
+    background-position: -@profile-img-size*3 0;
+}
+.man-orange {
+    background-position: -@profile-img-size*0 -@profile-img-size;
+}
+.man-green {
+    background-position: -@profile-img-size*1 -@profile-img-size;
+}
+.man-blue {
+    background-position: -@profile-img-size*2 -@profile-img-size;
+}
+.man-grey {
+    background-position: -@profile-img-size*3 -@profile-img-size;
+}
+
+.listview {
+    h1 {
+        margin: 0 @card-padding 16px;
+    }
+    position: relative;
+    padding-top: @card-padding;
+    &:not(.lv-lg):not(.lv-message) {
+        .lv-item {
+            padding: 10px @card-padding;  //was 10px 15px
+        }
+    }
+    .media-body {
+      display: block;
+      width: auto;
+    }
+    .lv-body {
+      padding-bottom: @card-padding;
+    }
+    .lv-item {
+        position: relative;
+        display: block;
+        .transition(background-color);
+        .transition-duration(300ms);
+
+        &:hover {
+          text-decoration: none;
+        }
+        .lv-small {
+            font-size: 13px;
+            font-weight: 500;
+            color: @color-body; //was #A9A9A9;
+            .text-overflow();
+            display: block;
+            width: 100%;
+        }
+        .lv-caption {
+            font-size: 12px;
+            color: @color-caption;
+            .text-overflow();
+        }
+
+        .lv-tel, .lv-email {
+            font-size: 12px;
+            color: @color-caption;
+            &:before {
+                font-family: 'Material Icons';
+                //position: relative;
+                //left: 0px;
+                //top: 2px;
+                //margin-right: 3px;
+            }
+        }
+        //.lv-tel:before {
+        //    content: "\e0cd";
+        //}
+
+        .wrap-text {
+            max-width: @half-card-width - @profile-img-size - 3 * @card-padding;
+        }
+
+    }
+
+    .lv-title {
+        .text-overflow();
+        font-size: 15px;
+        font-weight: 400;
+        color: @color-body;
+        display: block;
+    }
+
+    .lv-item:hover {
+        background: #ECF9FF;
+        cursor: default;
+    }
+    a {
+        .lv-item:hover {
+            cursor: pointer;
+        }
+    }
+
+
+
+    [class*="lv-img"] {
+        border-radius: 50%;
+    }
+
+    .lv-img {
+        width: @profile-img-size;
+        height: @profile-img-size;
+        margin-right: @card-padding - 4px;    //4px is the whitespace between two inline blocks
+        .day {
+          color: white;
+          font-size: 20px;
+          display: block;
+          line-height: 1em;
+          text-align: center;
+          margin: -3px 0px 0px;
+        }
+        .month {
+          display: block;
+          text-align: center;
+          margin: 4px -1px 0px 0px;
+          color: #FFF;
+          font-size: 12px;
+        }
+    }
+
+    .lv-img-sm {
+        width: 35px;
+        height: 35px;
+    }
+
+    .lv-footer {
+        display: block;
+        text-align: center;
+        border-top: 1px solid #F0F0F0;
+        line-height: 100%;
+        font-size: 14px;
+        padding: @card-padding;
+        color: @color-button;
+    }
+
+    a.lv-footer:hover {
+        color: @color-button-active;
+        font-weight: 500;
+        background-color: @card-color;
+    }
+
+    &.lv-bordered {
+        .lv-item {
+            &:not(:last-child) {
+                border-bottom: 1px solid #f0f0f0;
+            }
+        }
+    }
+
+}
+
+
+/*
+ * Inside Card will have more padding
+ */
+.card-body {
+    .lv-item {
+        padding: 12px 20px;
+    }
 }
 
 /*
@@ -149,7 +372,7 @@ p+p {
 
         .panel-title {
             & > a {
-                padding: 8px 5px 16px 30px;
+                padding: 8px 5px 14px 30px;
                 color: #000;
                 position: relative;
                 text-decoration: none;
@@ -261,28 +484,48 @@ p+p {
  *  Tabs
  */
 
-.tabs-card {
-  background-color: @card-color;
-  .box-shadow(@card-shadow);
-  margin-bottom: 40px;
+.card, .tabs-card, .blogpost {
+    border-radius: 2px;
+    background-color: @card-color;
+    .box-shadow(@card-shadow);
+    max-width: @card-width;
+    margin: 0 auto 40px;
+
+    &.half-card {
+        max-width: @half-card-width;
+        width: 100%;
+        margin: 0px 15px 30px;
+        display: inline-block;
+        vertical-align: top;
+    }
 }
 
 .m-tab {
     background-color: white;
     //padding-left: @card-padding;
     border-bottom: 1px solid #DDD;
+    text-align:center;            // Centers the tabs
     & > li {
-
+        float: none;              // Centers the tabs
+        display: inline-block;    // Centers the tabs
+        *display: inline; /* ie7 fix */
+        *zoom:1; /* hasLayout ie7 trigger */
+        min-width: 120px;
+        //max-width: 260px;
         & > a {
-            font-size: 13px;
             display: inline-block;
-            color: #7a7a7a;
-            text-transform: uppercase;
+            color: @color-button;
             position: relative;
             width: 100%;
             .transition(all);
-            .transition-duration(250ms);
-            font-weight: 500;
+            .transition-duration(400ms);
+            transition: opacity 0.1s cubic-bezier(0.4, 0, 1, 1) 0s;
+
+
+            &:hover, &:focus:hover {
+              box-shadow: none;
+              color: @color-button-active;
+            }
 
             &:after {
                 content: "";
@@ -297,23 +540,23 @@ p+p {
             }
 
             @media (min-width: @screen-sm-min) {
-                padding: 15px @card-padding + 1px;
+                padding: 11px @card-padding + 1px;    //top-bottom 15px
             }
 
             @media (max-width: @screen-sm-min) {
-                padding: 15px 8px;
+                padding: 11px 8px;                    //top-bottom 15px
             }
         }
 
         &.active {
             & > a {
-                color: #000;
-
+                color: @color-button-active;
+                font-weight: 700;
                 &:after {
                     .scale(1);
                 }
-                &:hover, &:focus {
-                    color: #000;
+                &:hover, &:focus, &:focus:hover {
+                    color: @color-button-active;
                 }
             }
         }
@@ -394,7 +637,7 @@ p+p {
  */
 
 .back-color {
-  h2 {
+  h1 {
     color: @header-text-inverse !important;
     a {
       color: @header-text-inverse !important;
@@ -432,8 +675,41 @@ p+p {
  * Navbar, Breadcrumb & Main container
  */
 
+.navbar-header h1 {
+  padding: 18px 0;
+  font-size: 24px;
+  float: left;
+  color: white;
+  margin: 0;
+}
+
+.navbar-nav li {
+  text-transform: uppercase;
+}
+
+.navbar-nav > .active > a,
+.navbar-nav > .active > a:focus,
+.navbar-nav > .active > a:active,
+.navbar-nav > .open > a,
+.navbar-nav > .open > a:focus,
+.navbar-nav > .open > a:active {
+  background-color: transparent !important;
+}
+
+.navbar-nav > .active > a,
+.navbar-nav > .active > a:focus,
+.navbar-nav > .active > a:active {
+  box-shadow: 0px -3px 0px white inset;
+}
+
+.cms_reset + .header-container {
+  .navbar-fixed-top {
+    top: 29px;
+  }
+}
+
 .main-container {
-  padding-top: 30px;
+  padding-top: 48px;
   background-color: @background-color;
 }
 
@@ -460,6 +736,7 @@ p+p {
   background-color: @background-color;      // @breadcrumb-bg
   border-bottom: 1px solid #E5E5E5;
   .box-shadow(@breadcrumb-shadow);
+  display: none;
 }
 
 .breadcrumb-fixed {
@@ -471,9 +748,9 @@ p+p {
 }
 
 .navbar-brand {
-    padding-top: 12px;
+    padding: 17px 30px;
     img {
-        height: 40px;
+        height: 30px;
     }
 }
 
@@ -496,9 +773,9 @@ hr {
   border: none;
   .box-shadow(none);
   padding: 6px 10px;
-  color: @primary-dark;
+  color: @primary-bold;
   &:hover, &:focus, &:active {
-    color: @primary-dark;
+    color: @primary-bold;
   }
 }
 
@@ -507,21 +784,20 @@ hr {
   .box-shadow(none);
   transition: all 0.05s ease 0s;
   padding: @card-padding - 4px @card-padding;
-  color: @primary-dark;
+  color: @primary-bold;
   &:hover, &:focus, &:active {
     background-color: @blue;
     color: #fff;
   }
 }
 
-.blogpost, .card {
-  background-color: @card-color;
-  .box-shadow(@card-shadow);
-  margin: 0 0 40px;
+.blogpost {
   header {
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
     background-color: @card-header-color;
     padding: @card-padding;
-    h2 {
+    h1 {
       color: @header-text-color;
       font-weight: 300;
       text-transform: none;
@@ -546,7 +822,8 @@ hr {
   }
   .blogpost-content {
     border-bottom: @card-separator;
-    padding: @card-padding @card-padding 1px;
+    padding: @card-padding;
+    padding-bottom: @card-padding - 15px;
   }
   .row .blogpost-content {
     padding-bottom: 0;
@@ -562,6 +839,11 @@ hr {
   .btn-more {
     margin: -10px -10px;
   }
+}
+
+.pager {
+    max-width: @card-width;
+    margin: @card-padding auto;
 }
 
 .more-card {

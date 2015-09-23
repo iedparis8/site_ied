@@ -1,0 +1,19 @@
+{% load sekizai_tags cms_tags %}
+
+<div class="card half-card masonry-grid-item">
+    <div class="listview">
+        <h1>
+            {{ instance.title }}
+        </h1>
+        <div class="lv-body">
+            {% for item in instance.child_plugin_instances %}
+            <div class="lv-item">
+                {% render_plugin item %}
+            </div>
+            {% endfor %}
+        </div>
+        {% if instance.btn_more_text %}
+            <a class="btn btn-default btn-more lv-footer" href="{{ instance.btn_more_link }}">{{ instance.btn_more_text }}</a>
+        {% endif %}
+    </div>
+</div>

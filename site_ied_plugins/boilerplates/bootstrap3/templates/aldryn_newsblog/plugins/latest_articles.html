@@ -1,18 +1,30 @@
-{% load i18n apphooks_config_tags %}
+{% load i18n apphooks_config_tags cms_tags %}
+{% load siteied_tags %}
 
-<div class="masonry-grid row">
-    {% for article in article_list %}
-        {% include "aldryn_newsblog/includes/article.html" with namespace=instance.app_config.namespace %}
-    {% empty %}
-        <p class="well">{% trans "No items available" %}</p>
-    {% endfor %}
-    <div class="masonry-grid-item col-sm-12 col-md-12">
-        <div class="card more-card">
-            <a class="btn btn-default btn-lg btn-block btn-block-more" href="{% namespace_url "article-list" namespace=instance.app_config.namespace default='' %}">
-                <div class="text-center">
-                    Lire plus +
-                </div>
-            </a>
+
+<div class="card half-card masonry-grid-item">
+    <div class="listview">
+        <h1>
+            Actualités
+        </h1>
+        <div class="lv-body">
+            {% for article in article_list %}
+                <a href="{% namespace_url "article-detail" article.slug namespace=instance.app_config.namespace default='' %}">
+                    <div class="lv-item">
+                        <div class="media">
+                            <div class="lv-img back-{{ article.id|get_color }}"><span class="month">{{ article.publishing_date|date:"N" }}</span><span class="day">{{ article.publishing_date|date:"j" }}</span></div>
+                            <div class="media-body wrap-text">
+                                <div class="lv-small">{% render_model article "title" %}</div>
+                                <div class="lv-caption">{% render_model article "lead_in" "" "" "striptags|truncatechars:100" %}</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+{#                {% include "aldryn_newsblog/includes/article.html" with namespace=instance.app_config.namespace %}#}
+            {% empty %}
+                <p class="well">{% trans "Pas de nouvelles disponibles" %}</p>
+            {% endfor %}
         </div>
+        <a class="btn btn-default btn-more lv-footer" href="{% namespace_url "article-list" namespace=instance.app_config.namespace default='' %}">Tous les actualités</a>
     </div>
 </div>

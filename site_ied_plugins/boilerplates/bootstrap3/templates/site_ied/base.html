@@ -2,20 +2,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{% block title %}Institut d'Enseignement à Distance - Université Paris 8{% endblock title %}</title>
+    <title>{% block title %}Institut d'Enseignement à Distance{% endblock title %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% render_block "css" %}
-{#    {% addtoblock "css" %}<link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}">{% endaddtoblock %}#}
-    {#    {% addtoblock "css" %}<link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap-theme.min.css' %}">{% endaddtoblock %}#}
-    {% addtoblock "css" %}<link rel="stylesheet" href="{% static 'css/compiled/bootstrap_theme.css' %}">{% endaddtoblock %}
     {% addtoblock "css" %}
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="{% static 'css/compiled/bootstrap_theme.css' %}">
     {% endaddtoblock %}
-    {% addtoblock "css" %}
-        <link rel="stylesheet" href="https://www.google.com/fonts#UsePlace:use/Collection:Roboto:400,700,500">
-    {% endaddtoblock %}
+{#    {% addtoblock "css" %}#}
+{#        <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">#}
+{#    {% endaddtoblock %}#}
+{#    {% addtoblock "css" %}#}
+{#        <link rel="stylesheet" href="http://www.google.com/fonts#UsePlace:use/Collection:Roboto:400,700,500">#}
+{#    {% endaddtoblock %}#}
     <!-- SmartMenus jQuery Bootstrap Addon CSS -->
-    <link href="{% static 'css/smartmenus/jquery.smartmenus.bootstrap.css' %}" rel="stylesheet">
+    {% addtoblock "css" %}
+        <link href="{% static 'css/smartmenus/jquery.smartmenus.bootstrap.css' %}" rel="stylesheet">
+    {% endaddtoblock %}
     <!-- jQuery & Bootstrap -->
     {% addtoblock "js" %} <script src="{% static 'js/jquery/jquery.js' %}"></script> {% endaddtoblock %}
     {% addtoblock "js" %} <script src="{% static 'js/bootstrap/bootstrap.js' %}"></script> {% endaddtoblock %}
@@ -26,11 +28,12 @@
         <div class="header-container" style="padding-bottom: 0px;">
             <header>
                 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-                    <div class="container" style="padding-right: 30px">
+                    <a class="navbar-brand" href="/">
+                        <img alt="Brand" src="/static/images/logo_short.svg">
+                    </a>
+                    <div class="containerNOT" style="padding-right: 30px">
                         <div class="navbar-header">
-                            <a class="navbar-brand" href="/">
-                                <img alt="Brand" src="/static/images/logo_white.svg">
-                            </a>
+                            <h1>{% block heading %}Institut d'Enseignement à Distance{% endblock heading %}</h1>
                         </div>
                         <div class="navbar-collapse collapse">
                             <ul class="nav navbar-nav navbar-right">
@@ -69,6 +72,11 @@
         <script type="text/javascript" src="{% static 'js/smartmenus/jquery.smartmenus.bootstrap.min.js' %}"></script>
     {% endaddtoblock %}
 
+    <!-- Js File added to all pages -->
+    {% addtoblock 'js' %}
+        <script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
+    {% endaddtoblock %}
+
 
     <!-- Isotope Masonry and its activation -->
     {% addtoblock 'js' %}
@@ -76,9 +84,6 @@
     {% endaddtoblock %}
     {% addtoblock 'js' %}
         <script type="text/javascript" src="{% static 'js/template.js' %}"></script>
-    {% endaddtoblock %}
-    {% addtoblock 'js' %}
-        <script type="text/javascript" src="{% static 'js/isotope/modulo-columns.js' %}"></script>
     {% endaddtoblock %}
 
     {% render_block "js" %}
