@@ -166,17 +166,20 @@ p+p {
 html, body {
 	height: 100%;
 }
-.page-wrapper {
-	min-height: 100%;
-	margin: 0 auto -@footer-height; /* the bottom margin is the negative value of the footer's height */
-}
-footer, .push-footer {
-	height: @footer-height; /* '.push' must be the same height as 'footer' */
+body {
+    .page-wrapper {
+        min-height: 100%;
+        margin: 0 auto -@footer-height; /* the bottom margin is the negative value of the footer's height */
+        .push-footer {
+            height: @footer-height; /* '.push' must be the same height as 'footer' */
+        }
+    }
+    .body-footer {
+        height: @footer-height; /* '.push' must be the same height as 'footer' */
+        background-color: @deep-grey;
+    }
 }
 
-footer {
-    background-color: @deep-grey;
-}
 
 /*
  * Footer
