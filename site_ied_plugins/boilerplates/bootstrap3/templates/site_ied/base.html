@@ -55,12 +55,25 @@
             {% block content %}
             {% endblock content %}
         </section>
-        <footer>
-            <div class="container">
-                {% static_placeholder 'footer' %}
-            </div>
-        </footer>
+        <div class="push-footer"></div>
     </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="social-btns">
+                <a href="https://facebook.com/paris8" class="social-btn" role="button" title="Facebook">
+                    <img alt="Facebook" src="/static/images/social_icons/facebook-box.png">
+                </a>
+                <a href="https://github.com/iedparis8" class="social-btn" role="button" title="GitHub">
+                    <img alt="GitHub" src="/static/images/social_icons/github-circle.png">
+                </a>
+                <a href="https://twitter.com/univparis8" class="social-btn" role="button" title="Twitter">
+                    <img alt="Twitter" src="/static/images/social_icons/twitter-box.png">
+                </a>
+            </div>
+            <p class="logo">IED Paris 8</p>
+            {% static_placeholder 'footer' %}
+        </div>
+    </footer>
 
     <!-- SmartMenus jQuery plugin -->
     {% addtoblock "js" %}

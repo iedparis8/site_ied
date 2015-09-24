@@ -36,7 +36,7 @@
 @green:             #4caf50;                //Now is Green 500 was #2ecc71;
 @orange:            #ff9800;                //Now is Orange 500 was #f39c12
 @violet:            #9b59b6;
-@deep-grey:         #455a64;                //Now is Blue Grey 800 was #34495e
+@deep-grey:         #424242;                //Now is Blue Grey 900 was #34495e
 
 @navbar-shadow:     0px 1px 4px rgba(0, 0, 0, 0.3);
 @breadcrumb-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
@@ -66,6 +66,7 @@
 @header-text-inverse: #fff;
 @header-sub-inverse: #fff;
 
+@footer-height:     120px;
 
 .lv-img, .media-body{
   display:inline-block !important;
@@ -155,6 +156,52 @@ p+p {
 .alert p {
   padding: 0px;
   margin: 0px;
+}
+
+/*
+ * Sticky Footer
+ * http://ryanfait.com/html5-sticky-footer/
+ */
+
+html, body {
+	height: 100%;
+}
+.page-wrapper {
+	min-height: 100%;
+	margin: 0 auto -@footer-height; /* the bottom margin is the negative value of the footer's height */
+}
+footer, .push-footer {
+	height: @footer-height; /* '.push' must be the same height as 'footer' */
+}
+
+footer {
+    background-color: @deep-grey;
+}
+
+/*
+ * Footer
+ */
+
+footer {
+    .social-btns {
+        padding: 32px 0 16px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        .social-btn {
+            padding: 0 16px;
+            img {
+                width: 24px;
+                height: 24px;
+            }
+        }
+    }
+    .logo {
+        text-align: center;
+        color: #FFFFFF;
+        font-size: 14px;
+        font-weight: 500;
+    }
 }
 
 /*
@@ -551,7 +598,7 @@ p+p {
         &.active {
             & > a {
                 color: @color-button-active;
-                font-weight: 700;
+                font-weight: 500;           //was 700
                 &:after {
                     .scale(1);
                 }
@@ -708,9 +755,12 @@ p+p {
   }
 }
 
+.page-wrapper {
+    background-color: @background-color;
+}
+
 .main-container {
-  padding-top: 48px;
-  background-color: @background-color;
+  padding: 48px 0 18px;                //was padding-top
 }
 
 .navbar {
