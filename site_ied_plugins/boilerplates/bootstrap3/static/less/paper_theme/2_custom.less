@@ -159,6 +159,42 @@ p+p {
 }
 
 /*
+ * Hero Header
+ */
+
+.hero-header {
+    margin: 0;
+    padding: 120px 24px 100px;
+    //height: 500px;
+    background-color: @brand-primary;
+    text-align: center;
+    h1, h2 {
+        color: white;
+    }
+    h1 {
+        margin: 0;
+        font-size: 24px;
+    }
+    h2 {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.87);
+        font-weight: normal;
+    }
+    .logo-ied img{
+        display: inline;
+        margin-bottom: 50px;
+        height: 60px;
+    }
+    button {
+        margin-top: 50px;
+    }
+}
+
+.navbar-brand, .navbar-header {
+    .transition(all 400ms);
+}
+
+/*
  * Sticky Footer
  * http://ryanfait.com/html5-sticky-footer/
  */
@@ -241,9 +277,14 @@ footer {
 }
 
 .listview {
-    h1 {
-        margin: 0 @card-padding 16px;
+    &>* {
+        margin: 0 @card-padding;
     }
+
+    &>h1 {
+        margin-bottom: 16px;
+    }
+
     position: relative;
     padding-top: @card-padding;
     &:not(.lv-lg):not(.lv-message) {
@@ -252,11 +293,13 @@ footer {
         }
     }
     .media-body {
-      display: block;
-      width: auto;
+        display: block;
+        width: auto;
     }
     .lv-body {
-      padding-bottom: @card-padding;
+        padding-bottom: @card-padding;
+        margin-left: 0;
+        margin-right: 0;
     }
     .lv-item {
         position: relative;
@@ -330,20 +373,24 @@ footer {
         width: @profile-img-size;
         height: @profile-img-size;
         margin-right: @card-padding - 4px;    //4px is the whitespace between two inline blocks
+        .day, .month, .letter {
+            color: white;
+            display: block;
+            text-align: center;
+        }
         .day {
-          color: white;
-          font-size: 20px;
-          display: block;
-          line-height: 1em;
-          text-align: center;
-          margin: -3px 0px 0px;
+            margin: -3px 0px 0px;
+            font-size: 20px;
+            line-height: 1em;
         }
         .month {
-          display: block;
-          text-align: center;
-          margin: 4px -1px 0px 0px;
-          color: #FFF;
-          font-size: 12px;
+            margin: 4px -1px 0px 0px;
+            font-size: 12px;
+        }
+        .letter {
+            margin: 4px 0px 0px 1px;
+            font-size: 23px;
+            opacity: 0.7;
         }
     }
 
@@ -353,9 +400,13 @@ footer {
     }
 
     .lv-footer {
+        margin-left: 0;
+        margin-right: 0;
+        border-top-left-radius: unset;
+        border-top-right-radius: unset;
+        border-top: 1px solid #F0F0F0;
         display: block;
         text-align: center;
-        border-top: 1px solid #F0F0F0;
         line-height: 100%;
         font-size: 14px;
         padding: @card-padding;
@@ -569,7 +620,7 @@ footer {
             width: 100%;
             .transition(all);
             .transition-duration(400ms);
-            transition: opacity 0.1s cubic-bezier(0.4, 0, 1, 1) 0s;
+            .transition(opacity 0.1s cubic-bezier(0.4, 0, 1, 1) 0s);
 
 
             &:hover, &:focus:hover {
@@ -636,43 +687,7 @@ footer {
 
     &:not([data-tab-color]) {
         & > li > a:after {
-            background: @m-blue;
-        }
-    }
-
-    &[data-tab-color="green"] {
-        & > li > a:after {
-            background: @m-green;
-        }
-    }
-
-    &[data-tab-color="red"] {
-        & > li > a:after {
-            background: @m-red;
-        }
-    }
-
-    &[data-tab-color="teal"] {
-        & > li > a:after {
-            background: @m-teal;
-        }
-    }
-
-    &[data-tab-color="amber"] {
-        & > li > a:after {
-            background: @m-amber;
-        }
-    }
-
-    &[data-tab-color="black"] {
-        & > li > a:after {
-            background: @m-black;
-        }
-    }
-
-    &[data-tab-color="cyan"] {
-        & > li > a:after {
-            background: @m-cyan;
+            background: @color-button-active;
         }
     }
 }
@@ -767,7 +782,11 @@ footer {
 }
 
 .navbar {
-  .box-shadow(@navbar-shadow);
+    .box-shadow(@navbar-shadow);
+    .transition(all 500ms);
+    &.no-shadow{
+        .box-shadow(none);
+    }
 }
 
 .breadcrumb {
@@ -800,7 +819,8 @@ footer {
   margin-bottom: 30px;
 }
 
-.navbar-brand {
+
+.logo-ied {
     padding: 17px 30px;
     img {
         height: 30px;
@@ -835,7 +855,7 @@ hr {
 .btn-block-more {
   border: none;
   .box-shadow(none);
-  transition: all 0.05s ease 0s;
+  .transition(all 0.05s ease 0s);
   padding: @card-padding - 4px @card-padding;
   color: @primary-bold;
   &:hover, &:focus, &:active {

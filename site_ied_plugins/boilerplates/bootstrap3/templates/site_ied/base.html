@@ -28,7 +28,7 @@
         <div class="header-container" style="padding-bottom: 0px;">
             <header>
                 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-                    <a class="navbar-brand" href="/">
+                     <a class="navbar-brand logo-ied" href="/">
                         <img alt="Brand" src="/static/images/logo_short.svg">
                     </a>
                     <div class="containerNOT" style="padding-right: 30px">
@@ -44,6 +44,58 @@
                 </div>
             </header>
         </div>
+{#     BEGGGINING HEADER     #}
+{##}
+{#    {% addtoblock 'js' %}#}
+{#        <script type="text/javascript">#}
+{#            put_shadow = function(){#}
+{#                var header = $('.navbar');#}
+{#                if(header.offset().top !== 0){#}
+{#                    header.removeClass('no-shadow');#}
+{#                }else{#}
+{#                    if(!header.hasClass('no-shadow')){#}
+{#                        header.addClass('no-shadow');#}
+{#                    }#}
+{#                }#}
+{#            }#}
+{##}
+{#            hide_title = function(){#}
+{#                var duration = 100;#}
+{#                var header = $('.navbar');#}
+{#                var logo = $('.navbar-brand');#}
+{#                var title = $('.navbar-header');#}
+{#                if(header.offset().top <= 260){#}
+{#                    logo.hide();#}
+{#                    title.hide();#}
+{#                }else{#}
+{#                    logo.show();#}
+{#                    title.show();#}
+{#                }#}
+{#            }#}
+{##}
+{##}
+{#            $(window).ready(put_shadow());#}
+{#            $(window).ready(hide_title());#}
+{#            $(window).scroll(put_shadow);#}
+{#            $(window).scroll(hide_title);#}
+{#        </script>#}
+{#    {% endaddtoblock %}#}
+{##}
+{#        <div class="hero-header">#}
+{#            <a class="logo-ied" href="/">#}
+{#                <img alt="Brand" src="/static/images/logo_short.svg">#}
+{#            </a>#}
+{#            <h1>Institut d'Enseignement à Distance - Paris 8</h1>#}
+{#            <h2>Psychologie · Droit · Informatique · Sciences de l'Education</h2>#}
+{#            <button type="button" class="btn btn-default">#}
+{#                Je m'inscris#}
+{#            </button>#}
+{#        </div>#}
+
+
+{#        END HEADER         #}
+
+        {% placeholder 'header' %}
         <div class="breadcrumb-container">
             <div class="container">
                 <ol class="breadcrumb">
