@@ -1,18 +1,12 @@
 from django import forms
 from listview.models import ListViewContactItem
 from listview.utils import get_personnel
+from django.conf import settings
 
 
 class PersonnelForm(forms.ModelForm):
-    colors = [
-        ('orange','Orange'),
-        ('green','Vert'),
-        ('blue','Bleu'),
-        ('grey','Gris'),
-    ]
 
     person = forms.ChoiceField(required=True, label='IED Personnel')
-    color = forms.ChoiceField(required=True, label='Icon color', choices=colors)
 
     def __init__(self, *args, **kwargs):
         super(PersonnelForm, self).__init__(*args, **kwargs)

@@ -7,9 +7,7 @@
         </h1>
         <div class="lv-body">
             {% for item in instance.child_plugin_instances %}
-            <div class="lv-item">
                 {% render_plugin item %}
-            </div>
             {% endfor %}
         </div>
         {% if instance.btn_more_text %}
