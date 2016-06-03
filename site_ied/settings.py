@@ -68,8 +68,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/static_tel/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, '../static').replace('\\', '/')
+
 MEDIA_ROOT = os.path.join(BASE_DIR, '../static_tel').replace('\\', '/')
+STATIC_ROOT = os.path.join(BASE_DIR, '../static').replace('\\', '/')
+
 
 SITE_ID = 1
 
@@ -147,7 +149,7 @@ INSTALLED_APPS = (
     'reversion',
     'sortedm2m',
     'taggit',
-    'djangocms_flash',
+    'djangocms_flash',              # TODO: Add?
     'djangocms_googlemap',
     'djangocms_inherit',
 
@@ -168,6 +170,8 @@ INSTALLED_APPS = (
     'aldryn_bootstrap3',
     'listview',
     'requests',
+    'angular_plugins',              # TODO: Add?
+    # 'rest_framework',
 )
 
 LANGUAGES = (
@@ -291,3 +295,19 @@ try:
 
 except ImportError:
     local_settings = object
+
+COLOR_CHOICES = [
+    (None, 'Auto'),
+    ('orange', 'Orange'),
+    ('green', 'Vert'),
+    ('blue', 'Bleu'),
+    ('grey', 'Gris'),
+]
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny'
+    ]
+}

@@ -1,0 +1,27 @@
+{% load cms_tags sekizai_tags staticfiles%}
+
+{% addtoblock 'js' %}
+    <script src="https://code.angularjs.org/tools/system.js"></script>
+{% endaddtoblock %}
+{% addtoblock 'js' %}
+    <script src="https://code.angularjs.org/tools/typescript.js"></script>
+{% endaddtoblock %}
+{% addtoblock 'js' %}
+    <script src="https://code.angularjs.org/2.0.0-alpha.44/angular2.dev.js"></script>
+{% endaddtoblock %}
+{% addtoblock 'js' %}
+    <script>
+      System.config({
+        transpiler: 'typescript',
+        typescriptOptions: { emitDecoratorMetadata: true }
+      });
+      System.import('{% static "angular2/src/app/app.ts" %}');
+    </script>
+{% endaddtoblock %}
+
+
+<div class="cards-container masonry-grid" >
+    <div class="card half-card masonry-grid-item">
+        <my-app>loading...</my-app>
+    </div>
+</div>

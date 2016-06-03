@@ -5,10 +5,12 @@ from django.conf.urls.i18n import i18n_patterns
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib import admin
 from django.conf import settings
+import angular_plugins.urls as angular_urls
 
 admin.autodiscover()
 
 urlpatterns = i18n_patterns('',
+    url(r'^api/', include(angular_urls)),
     url(r'^admin/', include(admin.site.urls)),  # NOQA
     url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap',
         {'sitemaps': {'cmspages': CMSSitemap}}),

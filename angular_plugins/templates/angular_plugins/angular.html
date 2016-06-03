@@ -1,0 +1,41 @@
+{% load cms_tags sekizai_tags staticfiles%}
+
+{% addtoblock 'js' %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular.js"></script>
+{% endaddtoblock %}
+{% addtoblock 'js' %}
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-animate.js"></script>
+{% endaddtoblock %}
+{% addtoblock 'js' %}
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-route.js"></script>
+{% endaddtoblock %}
+{% addtoblock 'js' %}
+    <script src="{% static "angularjs/app/app.js" %}"></script>
+{% endaddtoblock %}
+{% addtoblock 'js' %}
+    <script src="{% static "angularjs/app/services.js" %}"></script>
+{% endaddtoblock %}
+{% addtoblock 'js' %}
+    <script src="{% static "angularjs/app/directives.js" %}"></script>
+{% endaddtoblock %}
+{% addtoblock 'js' %}
+    <script src="{% static "angularjs/app/controllers.js" %}"></script>
+{% endaddtoblock %}
+
+
+
+<div ng-app="myApp">
+    <div class="cards-container masonry-grid" >
+        <div class="card half-card masonry-grid-item">
+            <ul class="nav nav-pills" role="tablist">
+                <li role="presentation"><a href="#/">Main</a></li>
+                <li role="presentation"><a href="#/second">Second</a></li>
+            </ul>
+
+            <div class="listview" ng-view onload="reloadGrid()">
+
+            </div>
+        </div>
+    </div>
+</div>
+
